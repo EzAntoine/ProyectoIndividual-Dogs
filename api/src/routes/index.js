@@ -14,7 +14,7 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-//OK SOLO API.
+//OK API y BD.
 router.get('/dogs', async(req, res)=>{ 
     try {
         const razas=await getAllBreeds();
