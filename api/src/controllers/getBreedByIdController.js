@@ -1,4 +1,4 @@
-const {Dogs, Temperaments}=require('../db');
+const {Dogs}=require('../db');
 const getBreedsController=require('./getBreedsController');
 
 module.exports=async(idRaza)=>{
