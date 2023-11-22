@@ -1,7 +1,6 @@
 const { Router } = require('express');
-const getAllBreeds=require('../controllers/getAllBreeds');
+const getBreeds=require('../controllers/getBreeds');
 const getBreedDetail=require('../controllers/getBreedDetail');
-const getBreedByName=require('../controllers/getBreedByName');
 const postDog=require('../controllers/postDog');
 const getTemperaments=require('../controllers/getTemperaments');
 
@@ -14,13 +13,24 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-//OK API y BD.
+//OK API y BD. Get by name.
 router.get('/dogs', async(req, res)=>{ 
     try {
-        const razas=await getAllBreeds();
-        res.status(200).json(razas);
+        const {name}=req.query;
+
+        const allBreeds = await getBreeds();
+            if (name) { 
+                console.log(name);
+                const filtrados = await allBreeds?.filter((dog) => dog.name && dog.name.toLowerCase().includes(name.toLowerCase()));
+                
+                filtrados.length 
+                    ? res.status(200).send(filtrados) 
+                    : res.status(404).send(`No existen coincidencias con el nombre ${name}`);
+            }else { 
+                res.status(200).json(allBreeds);
+            }
     } catch (error) {
-        res.status(400).json({error: error.message})
+        res.status(400).json({error: error.message});
     }
 });
 
@@ -34,14 +44,6 @@ router.get('/dogs/:idRaza', async(req,res)=>{
     } catch (error) {
         res.status(400).json({error: error.message}) 
     }
-})
-
-router.get('/dogs/name?="..."', (req,res)=>{
-    const {name}=req.query;
-
-    const breeds=getBreedByName(name);
-
-    res.status(200).send('Obtiene todas las razas que coinciden con el nombre recibido por query')
 })
 
 router.post('/dogs', async(req,res)=>{

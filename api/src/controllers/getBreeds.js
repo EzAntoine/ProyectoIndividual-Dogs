@@ -5,7 +5,7 @@ const {API_KEY}=process.env;
 const axios=require('axios');
 const URL=`${API}?api_key=${API_KEY}`;
 
-module.exports=async(req, res)=>{
+module.exports=async()=>{
     
         const {data}=await axios.get(URL);
         
@@ -26,5 +26,5 @@ module.exports=async(req, res)=>{
             }
         });
         
-        return [allBreeds,breedsDB];    
+        return allBreeds.concat(breedsDB);    
 }
