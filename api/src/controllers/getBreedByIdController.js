@@ -1,10 +1,10 @@
 const {Dogs, Temperaments}=require('../db');
-const getBreeds=require('../controllers/getBreeds');
+const getBreedsController=require('./getBreedsController');
 
 module.exports=async(idRaza)=>{
 
-    const allBreeds=await getBreeds();
-    const detail=allBreeds?.find(dog=>dog.name && dog.id.toString()===idRaza);
+    const allBreeds=await getBreedsController();
+    const detail=allBreeds?.find(dog=>dog.name && dog.id===+idRaza);
 
     if(detail)        
         return detail;

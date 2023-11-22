@@ -1,8 +1,8 @@
 const { Router } = require('express');
-const getBreeds=require('../controllers/getBreeds');
-const getBreedById=require('../controllers/getBreedById');
-const postDog=require('../controllers/postDog');
-const getTemperaments=require('../controllers/getTemperaments');
+const getBreedsController=require('../controllers/getBreedsController');
+const getBreedByIdController=require('../controllers/getBreedByIdController');
+const postDogController=require('../controllers/postDogController');
+const getTemperamentsController=require('../controllers/getTemperamentsController');
 
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
@@ -18,7 +18,7 @@ router.get('/dogs', async(req, res)=>{
     try {
         const {name}=req.query;
 
-        const allBreeds = await getBreeds();
+        const allBreeds = await getBreedsController();
             if (name) { 
                 const filtrados = await allBreeds?.filter((dog) => dog.name && dog.name.toLowerCase().includes(name.toLowerCase()));
                 
@@ -37,7 +37,7 @@ router.get('/dogs', async(req, res)=>{
 router.get('/dogs/:idRaza', async(req,res)=>{ 
     const {idRaza}=req.params;
     try {
-        const detail=await getBreedById(idRaza);
+        const detail=await getBreedByIdController(idRaza);
         
         if(detail)        
             res.status(200).json(detail);
@@ -51,7 +51,7 @@ router.get('/dogs/:idRaza', async(req,res)=>{
 router.post('/dogs', async(req,res)=>{
     const {name, weight, height, image, life_span}=req.body;
     try {
-        const newDog=await postDog(name, weight, height, image, life_span);
+        const newDog=await postDogController(name, weight, height, image, life_span);
     
         res.status(200).json(newDog);
     } catch (error) {
