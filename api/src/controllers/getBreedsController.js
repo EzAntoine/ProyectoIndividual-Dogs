@@ -1,5 +1,5 @@
 require('dotenv').config();
-const {Dogs, Temperaments}=require('../db');
+const {Dogs, Temperaments, dogs_temperaments}=require('../db');
 const {API}=process.env;
 const {API_KEY}=process.env;
 const axios=require('axios');
@@ -17,12 +17,16 @@ module.exports=async()=>{
                 height:dog.height,
                 life_span:dog.life_span,
                 image:dog.image,
+                temperament:dog.temperament
             }
         })
         
-        const breedsDB= Dogs.findAll({
+        const breedsDB= await Dogs.findAll({
             include:{
                 model: Temperaments,
+                through: {model: dogs_temperaments},
+                as: 'temperament',
+                attributes: ['name'],
             }
         });
         

@@ -18,5 +18,9 @@ module.exports=async()=>{
         return apiTemps.concat(arrayTemps);
     },[]);
     
-    return [...new Set(resultTemps)];
+    const temperamentos=[...new Set(resultTemps)];
+    
+    temperamentos.forEach(tem=>{if(tem)Temperaments.create({name:tem})});
+
+    return temperamentos;
 }

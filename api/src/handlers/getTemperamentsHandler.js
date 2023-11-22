@@ -3,7 +3,6 @@ const getTemperamentsController=require('../controllers/getTemperamentsControlle
 module.exports=async(req,res)=>{
     try {
         const allTemps=await getTemperamentsController();
-        console.log(allTemps);
         if(allTemps)
             res.status(200).json(allTemps);
         else
