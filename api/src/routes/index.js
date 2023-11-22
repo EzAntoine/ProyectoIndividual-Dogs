@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const getBreeds=require('../controllers/getBreeds');
-const getBreedDetail=require('../controllers/getBreedDetail');
+const getBreedById=require('../controllers/getBreedById');
 const postDog=require('../controllers/postDog');
 const getTemperaments=require('../controllers/getTemperaments');
 
@@ -20,7 +20,6 @@ router.get('/dogs', async(req, res)=>{
 
         const allBreeds = await getBreeds();
             if (name) { 
-                console.log(name);
                 const filtrados = await allBreeds?.filter((dog) => dog.name && dog.name.toLowerCase().includes(name.toLowerCase()));
                 
                 filtrados.length 
@@ -34,13 +33,16 @@ router.get('/dogs', async(req, res)=>{
     }
 });
 
-//OK. SOLO API.
+//OK. API y DB.
 router.get('/dogs/:idRaza', async(req,res)=>{ 
     const {idRaza}=req.params;
     try {
-        const detail=await getBreedDetail(idRaza);
-        console.log(detail);
-        res.status(200).json(detail);
+        const detail=await getBreedById(idRaza);
+        
+        if(detail)        
+            res.status(200).json(detail);
+        else
+            res.status(404).send(`No existen coincidencias con el ID ${idRaza}`);
     } catch (error) {
         res.status(400).json({error: error.message}) 
     }
