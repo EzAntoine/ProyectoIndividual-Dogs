@@ -19,14 +19,14 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     height:{
-        type:DataTypes.INTEGER,
+        type:DataTypes.STRING,
         allowNull:false,
         validate:{
             min:0,
         }
     },
     weight: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         validate:{
             min:0,

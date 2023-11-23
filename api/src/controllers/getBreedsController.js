@@ -13,10 +13,10 @@ module.exports=async()=>{
             return {
                 id:dog.id,
                 name:dog.name,
-                weight:dog.weight,
-                height:dog.height,
+                weight:dog.weight.imperial,
+                height:dog.height.imperial,
                 life_span:dog.life_span,
-                image:dog.image,
+                image:dog.image.url,
                 temperament:dog.temperament
             }
         })
@@ -24,7 +24,7 @@ module.exports=async()=>{
         const breedsDB= await Dogs.findAll({
             include:{
                 model: Temperaments,
-                through: {model: dogs_temperaments},
+                through: {model: dogs_temperaments,attributes: []},
                 as: 'temperament',
                 attributes: ['name'],
             }

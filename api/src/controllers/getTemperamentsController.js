@@ -14,13 +14,15 @@ module.exports=async()=>{
     });    
 
     let resultTemps=allTemps.reduce((apiTemps,dog)=>{
-        const arrayTemps=dog.temperament?.split(',').map(temp=>temp.trim());
+        const arrayTemps=dog.temperament?.split(',').map(temp=>temp.trim()); //Para cada string, separo los temperamentos y borro espacios.
         return apiTemps.concat(arrayTemps);
     },[]);
     
-    const temperamentos=[...new Set(resultTemps)];
+    resultTemps=resultTemps.filter(elem=>elem!=null); //Elimino los null.
+
+    const temperamentos=[...new Set(resultTemps)]; //Elimino duplicados.
     
-    temperamentos.forEach(tem=>{if(tem)Temperaments.create({name:tem})});
+    temperamentos.forEach(tem=>{if(tem)Temperaments.create({name:tem})}); //Creo cada temperamento en la BD.
 
     return temperamentos;
 }
