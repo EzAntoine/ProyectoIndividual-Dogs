@@ -22,7 +22,6 @@ module.exports=async()=>{
 
     const temperamentos=[...new Set(resultTemps)]; //Elimino duplicados.
     
-    temperamentos.forEach(tem=>{if(tem)Temperaments.create({name:tem})}); //Creo cada temperamento en la BD.
-
+    temperamentos.forEach(tem=>{if(tem)Temperaments.findOrCreate({where: {name:tem}})});
     return temperamentos;
 }
