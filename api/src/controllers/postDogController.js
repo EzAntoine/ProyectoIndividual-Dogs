@@ -8,8 +8,9 @@ module.exports=async(name, weight, height, image, life_span,temperament)=>{
         where: {name, weight, height, image, life_span}, 
         include: [{model: Temperaments, as: 'temperament'}]});
 
+    //Recibe temperamentos en 1 string, no los separa, los almacera como 1 solo.
     if(created){
-        const [newTemp,created]=await Temperaments.findOrCreate({where:{name:temperament}}); 
+        const [newTemp,createdTemp]=await Temperaments.findOrCreate({where:{name:temperament}}); 
         await createdDog.setTemperament(newTemp);
     }
     else

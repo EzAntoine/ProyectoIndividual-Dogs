@@ -22,6 +22,6 @@ module.exports=async()=>{
 
     const temperamentos=[...new Set(resultTemps)]; //Elimino duplicados.
     
-    temperamentos.forEach(tem=>{if(tem)Temperaments.findOrCreate({where: {name:tem}})});
+    temperamentos.forEach(tem=>{if(tem)Temperaments.findOrCreate({where: {name:tem}})}); //Guarda solo los temperamentos que no estan en la BD.
     return temperamentos;
 }
