@@ -38,8 +38,16 @@ export const getBreedByName=(breed)=>{
     }
 }
 
-export const createBreed=(breed, minHeight, maxHeight, minWeight, maxWeight, life_span, temperaments)=>{
-
+export const createBreed=(breed)=>{
+    return async(dispatch) => {
+        try {
+           const {data}=await axios.post(`http://localhost:3001/dogs`, breed)
+           return dispatch({
+            type: POST_BREED, 
+            payload: data
+        });
+        } catch (error) {window.alert(error.message)};
+    };
 }
 
 export const getTemperaments=()=>{
