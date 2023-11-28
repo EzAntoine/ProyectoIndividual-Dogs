@@ -1,6 +1,7 @@
 /* Hooks */
 import { useParams } from 'react-router-dom';
 import {useState, useEffect} from 'react';
+import { useSelector } from 'react-redux';
 /* Dendencies */
 //import axios from 'axios';
 import { getDetail } from '../../redux/actions';
@@ -9,7 +10,7 @@ import { getDetail } from '../../redux/actions';
 
 const Detail=()=>{
     const {id}=useParams();
-    
+    const {dog}=useSelector(state=>state.breedDetail);
     useEffect(()=>{
         getDetail(id);
         /* const {data}= axios.get(`http://localhost:3001/dogs/${id}`);

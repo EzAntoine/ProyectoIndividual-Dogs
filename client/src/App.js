@@ -1,7 +1,7 @@
 /* Styles */
 import './App.css';
 /* Hooks */
-import {BrowserRouter,Route} from 'react-router-dom';
+import {Route,Switch} from 'react-router-dom';
 /* Components */
 import Landing from "./components/Landing/Landing";
 import Home from "./components/Home/Home";
@@ -10,16 +10,16 @@ import CreateBreed from "./components/CreateBreed/CreateBreed";
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Route path='/' element={<Landing/>}/>
-        <Route path='/home' element={<Home/>}/>
-        <Route path='/detail/:id' element={<Detail/>}/>
-        <Route path='/createBreed' element={<CreateBreed/>}/>
-        {/* <Route path='/about' element={<About/>}/> */}
-      </BrowserRouter>
+      <div className="App">
+        <Switch>
+          <Route exact path='/' component={Landing}/>
+          <Route exact path='/home' component={Home}/>
+          <Route path='/home/:id' component={Detail}/>
+          <Route path='/createBreed' component={CreateBreed}/>
+          {/* <Route path='/about' element={<About/>}/> */}
+        </Switch>
       {/* {<h1>Henry Dogs</h1>} */}
-    </div>
+      </div>
   );
 }
 
