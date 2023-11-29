@@ -1,0 +1,45 @@
+.detailContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+    width: 130vh;
+    background-color: rgb(248, 227, 169); /* Color de fondo del contenedor */
+    border: 2px solid black;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+}
+  
+  .leftContent {
+    flex: 1; /* Divide el contenedor en dos, dando más espacio a la izquierda */
+    padding: 20px;
+    text-align: left;
+  }
+
+  .leftContent h2::before {
+    content: attr(data-label); /* Muestra el atributo "data-label" como contenido antes de h2 */
+    color: black; /* Color rojo para las etiquetas */
+  }
+  
+  .rightContent {
+    flex: 1;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Agrega estilos a los elementos dentro del componente según sea necesario */
+  .rightContent img {
+    max-width: 100%;
+    max-height: auto;
+    border: 1px solid  rgb(226, 226, 226);
+    border-radius: 10px;
+  }
+  .rightContent h2 {
+    margin: 8px 0;
+  }
