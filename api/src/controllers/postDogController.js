@@ -11,10 +11,8 @@ module.exports=async(name, weight, height, image, life_span,temperament)=>{
     //Recibe temperamentos en 1 string, los separa, los almacera por separado en BD.
     if(created){
             const arrayTemps=temperament?.split(',').map(temp=>temp.trim()); //Para cada string, separo los temperamentos y borro espacios.
-            console.log(arrayTemps);
 
         arrayTemps.forEach(async temp=>{
-            console.log(temp);
             const [newTemp,createdTemp]=await Temperaments.findOrCreate({where:{name:temp}});
             await createdDog.setTemperament(newTemp);
         })

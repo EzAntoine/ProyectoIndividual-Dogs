@@ -28,8 +28,8 @@ module.exports=async()=>{
                 as: 'temperament',
             }
         });
-        const breedsDBOrdenados=await breedsDB.map(dog=>{
 
+        const breedsDBOrdenados=await breedsDB.map(dog=>{
             return {
                 id:dog.id,
                 name:dog.name,
