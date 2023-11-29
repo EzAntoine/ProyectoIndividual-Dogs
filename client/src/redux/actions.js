@@ -34,7 +34,7 @@ export const getBreedByName=(breed)=>{
                 type:GET_BY_NAME,
                 payload:data,
             });    
-        } catch (error) {window.alert(error.message)};
+        } catch (error) {window.alert(`No existen coincidencias con el nombre ${breed}`)};
     }
 }
 

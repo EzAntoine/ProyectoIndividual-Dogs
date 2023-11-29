@@ -16,7 +16,7 @@ const Cards=({allBreeds})=>{
                         id={id}
                         name={name}
                         weight={weight}
-                        temperament={temperament.name}
+                        temperament={temperament}
                         image={image}
                     />)
                 }else return "";

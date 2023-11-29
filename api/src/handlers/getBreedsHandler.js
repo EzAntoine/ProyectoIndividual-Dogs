@@ -11,7 +11,7 @@ module.exports=async(req,res)=>{
             
             filtrados.length 
             ? res.status(200).send(filtrados) 
-            : res.status(404).send(`No existen coincidencias con el nombre ${name}`);
+            : res.status(404).send(`No existen coincidencias con: ${name}`);
         }else { 
             res.status(200).json(allBreeds);
         }
