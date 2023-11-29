@@ -24,10 +24,9 @@ const Home=()=>{
         setSearchString(event.target.value);
     }
     
-    const handleSubmit=async(event)=>{
+    const handleSubmit=(event)=>{
         event.preventDefault(); //Evita que se re renderice constantemente.
-        const filtered=await dispatch(getBreedByName(searchString));
-        setFiltrados(filtered.payload);
+        dispatch(getBreedByName(searchString));
     }
 
     useEffect(()=>{

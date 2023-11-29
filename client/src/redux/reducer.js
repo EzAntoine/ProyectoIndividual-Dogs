@@ -24,7 +24,7 @@ const reducer=(state=initialState,action)=>{
         case GET_BY_NAME:
             return{
                 ...state,
-                filteredBreeds: action.payload
+                allBreeds: action.payload
             }
         case POST_BREED:
             return{
