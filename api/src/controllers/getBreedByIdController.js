@@ -17,9 +17,18 @@ module.exports=async(idRaza)=>{
                 attributes: ['name'],
                 },
         });
-        if(detailDB)
-            return detailDB;
-        else {throw new Error(`No existen coincidencias con el ID ${idRaza}`)};
-    }
 
-}
+        if(detailDB){
+                return {
+                    id:detailDB.id,
+                    name:detailDB.name,
+                    weight:detailDB.weight,
+                    height:detailDB.height,
+                    life_span:detailDB.life_span,
+                    image:detailDB.image,
+                    temperament:detailDB.temperament.map(t=>t.dataValues.name).join(', '),
+                }
+            }
+            else {throw new Error(`No existen coincidencias con el ID ${idRaza}`)};
+        }
+    }
