@@ -1,6 +1,6 @@
 /* Hooks */
 import { useParams } from 'react-router-dom';
-import {useState, useEffect} from 'react';
+import {useEffect} from 'react';
 import { useSelector } from 'react-redux';
 /* Dendencies */
 //import axios from 'axios';

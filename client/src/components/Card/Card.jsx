@@ -1,15 +1,16 @@
 /* Styles */
 import style from "./Card.module.css";
 
-const Card=()=>{
+const Card=({id,name,weight,temperament,image})=>{
 
     return(
         <div className={style.cardContainer}>
-            <h2>Raza:</h2>
-            <h2>Temperamento:</h2>
-            <h2>Peso</h2>
-            {/* <img src={image} alt={name} /> */}
-
+            <h2>{name}</h2>
+            <div className={style.imageContainer}>
+                <img className={style.dogImage} src={image} alt={name} />
+            </div>
+            <h2>Temperamento: {temperament}</h2>
+            <h2>Peso: {weight} kg</h2>
         </div>
     )
 

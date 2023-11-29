@@ -3,14 +3,24 @@ import style from "./Cards.module.css";
 /* Components */
 import Card from "../Card/Card";
 
-const Cards=()=>{
+const Cards=({allBreeds})=>{
+
+    const breeds=allBreeds;
 
     return(
         <div className={style.cardsList}>
-            <h2>Esta es Cards</h2>
-            <Card/>
-            <Card/>
-            <Card/>
+            {breeds?.map(({id,name,weight,temperament,image})=>{
+                if(id){
+                    return (<Card 
+                        key={id}
+                        name={name}
+                        weight={weight}
+                        temperament={temperament.name}
+                        image={image}
+                    />)
+                }
+            }
+            )}
         </div>
     )
 

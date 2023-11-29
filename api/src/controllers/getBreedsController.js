@@ -17,7 +17,9 @@ module.exports=async()=>{
                 height:dog.height.imperial,
                 life_span:dog.life_span,
                 image:dog.image.url,
-                temperament:dog.temperament
+                temperament:{
+                    name:dog.temperament
+                }
             }
         })
         
