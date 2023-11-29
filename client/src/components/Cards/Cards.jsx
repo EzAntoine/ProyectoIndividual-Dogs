@@ -13,6 +13,7 @@ const Cards=({allBreeds})=>{
                 if(id){
                     return (<Card 
                         key={id}
+                        id={id}
                         name={name}
                         weight={weight}
                         temperament={temperament.name}

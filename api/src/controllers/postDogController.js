@@ -8,10 +8,17 @@ module.exports=async(name, weight, height, image, life_span,temperament)=>{
         where: {name, weight, height, image, life_span}, 
         include: [{model: Temperaments, as: 'temperament'}]});
 
-    //Recibe temperamentos en 1 string, no los separa, los almacera como 1 solo.
+    //Recibe temperamentos en 1 string, los separa, los almacera por separado en BD.
     if(created){
-        const [newTemp,createdTemp]=await Temperaments.findOrCreate({where:{name:temperament}}); 
-        await createdDog.setTemperament(newTemp);
+            const arrayTemps=temperament?.split(',').map(temp=>temp.trim()); //Para cada string, separo los temperamentos y borro espacios.
+            console.log(arrayTemps);
+
+        arrayTemps.forEach(async temp=>{
+            console.log(temp);
+            const [newTemp,createdTemp]=await Temperaments.findOrCreate({where:{name:temp}});
+            await createdDog.setTemperament(newTemp);
+        })
+    
     }
     else
         throw new Error(`Error al crear. ${name} ya se encontraba en la base de datos.`);

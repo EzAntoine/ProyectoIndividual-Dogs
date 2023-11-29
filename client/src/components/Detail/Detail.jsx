@@ -1,7 +1,7 @@
 /* Hooks */
 import { useParams } from 'react-router-dom';
-import {useEffect} from 'react';
-import { useSelector } from 'react-redux';
+import {useEffect, useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 /* Dendencies */
 //import axios from 'axios';
 import { getDetail } from '../../redux/actions';
@@ -10,28 +10,29 @@ import { getDetail } from '../../redux/actions';
 
 const Detail=()=>{
     const {id}=useParams();
-    const {dog}=useSelector(state=>state.breedDetail);
+    const dispatch=useDispatch();
+    const dog=useSelector(state=>state.breedDetail);
+    const [dogDet,setDogDet]=useState(dog);
+
+    useEffect(() => {
+        setDogDet(dog);
+    }, [dog]);
+
     useEffect(()=>{
-        getDetail(id);
-        /* const {data}= axios.get(`http://localhost:3001/dogs/${id}`);
-        if(data.name)
-            setDog(data);
-        else    
-            window.alert(`No existen razas con el id: ${id}`);
-        
-        return setDog({}); */
-    },[id])
+        dispatch(getDetail(id));
+        return setDogDet({});
+    },[dispatch,id])
 
     return(
         <div>
             <div>
-                <h2>ID: {dog.id && dog.id}</h2>
-                <img src={dog.image && dog.image} alt={dog.name}/>
-                <h2>Raza: {dog.name && dog.name}</h2>
-                <h2>Altura: {dog.height && dog.height}</h2>
-                <h2>Peso: {dog.weight && dog.weight}</h2>
-                <h2>Temperamento: {dog.temperament && dog.temperament}</h2>
-                <h2>Años de vida: {dog.life_span && dog.life_span}</h2>
+                <h2>ID: {dogDet.id && dogDet.id}</h2>
+                <img src={dogDet.image && dogDet.image} alt={dogDet.name}/>
+                <h2>Raza: {dogDet.name && dogDet.name}</h2>
+                <h2>Altura: {dogDet.height && dogDet.height}</h2>
+                <h2>Peso: {dogDet.weight && dogDet.weight}</h2>
+                <h2>Temperamento: {dogDet.temperament && dogDet.temperament}</h2>
+                <h2>Años de vida: {dogDet.life_span && dogDet.life_span}</h2>
             </div>
         </div>
     )

@@ -17,21 +17,19 @@ module.exports=async()=>{
                 height:dog.height.imperial,
                 life_span:dog.life_span,
                 image:dog.image.url,
-                temperament:{
-                    name:dog.temperament
-                }
+                temperament:dog.temperament
             }
         })
         
         const breedsDB= await Dogs.findAll({
             include:{
                 model: Temperaments,
-                through: {model: dogs_temperaments/* ,attributes: [] */},
+                through: {model: dogs_temperaments},
                 as: 'temperament',
-                /* attributes: ['name'] ,*/
             }
         });
         const breedsDBOrdenados=await breedsDB.map(dog=>{
+
             return {
                 id:dog.id,
                 name:dog.name,
@@ -39,9 +37,9 @@ module.exports=async()=>{
                 height:dog.height,
                 life_span:dog.life_span,
                 image:dog.image,
-                temperament:dog.temperament[0]?.name
-                }
+                temperament:dog.temperament.map(t=>t.dataValues.name).join(', '),
             }
+        }
         )
 
         return allBreeds.concat(breedsDBOrdenados);    
