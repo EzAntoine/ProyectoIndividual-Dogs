@@ -4,14 +4,31 @@ import style from "./Home.module.css";
 import NavBar from "../NavBar/NavBar";
 import Cards from "../Cards/Cards";
 /* Hooks */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllBreeds } from "../../redux/actions";
+import { getAllBreeds, getBreedByName } from "../../redux/actions";
 
 const Home=()=>{
 
     const dispatch=useDispatch();
     const allBreeds=useSelector(state=>state.allBreeds);
+    const [filtrados,setFiltrados]=useState(allBreeds);
+    const [searchString,setSearchString]=useState("");
+
+    useEffect(() => {
+        setFiltrados(allBreeds);
+    }, [allBreeds]);
+
+    const handleChange=(event)=>{
+        event.preventDefault(); //Evita que se re renderice constantemente.
+        setSearchString(event.target.value);
+    }
+    
+    const handleSubmit=async(event)=>{
+        event.preventDefault(); //Evita que se re renderice constantemente.
+        const filtered=await dispatch(getBreedByName(searchString));
+        setFiltrados(filtered.payload);
+    }
 
     useEffect(()=>{
         dispatch(getAllBreeds());
@@ -20,11 +37,12 @@ const Home=()=>{
         }) */
     },[dispatch])
 
+    
     return(
         <div className={style.home}>
-            <h2 className={style.title}>Esta es la Home</h2>
-            <NavBar/>
-            <Cards allBreeds={allBreeds}/>
+            <h2 className={style.title}>Home</h2>
+            <NavBar handleChange={handleChange} handleSubmit={handleSubmit}/>
+            <Cards allBreeds={filtrados}/>
         </div>
     )
 

@@ -18,9 +18,9 @@ const Cards=({allBreeds})=>{
                         temperament={temperament.name}
                         image={image}
                     />)
-                }
+                }else return "";
+            })
             }
-            )}
         </div>
     )
 

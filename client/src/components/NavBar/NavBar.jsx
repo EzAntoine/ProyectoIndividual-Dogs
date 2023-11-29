@@ -1,12 +1,12 @@
 import style from "./NavBar.module.css";
 
-const NavBar=()=>{
+const NavBar=({handleChange,handleSubmit})=>{
 
     return(
         <div className={style.searchBox}>
-            <form>
-                <input placeholder="Search"/>
-                <button>Buscar</button>
+            <form onChange={handleChange}>
+                <input placeholder="Search" type="search"/>
+                <button type="submit" onClick={handleSubmit}>Buscar</button>
             </form>
            
         </div>
