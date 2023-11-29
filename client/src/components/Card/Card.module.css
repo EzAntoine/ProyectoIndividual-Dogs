@@ -69,7 +69,8 @@
     word-wrap: break-word;
 }
 
-.imageContainer:hover .characterImage {
-    opacity: 0.2;
+.cardContainer:hover {
+    transform: scale(1.05);
+    background-color: rgb(212, 184, 105);
 }
 

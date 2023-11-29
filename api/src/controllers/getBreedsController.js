@@ -26,11 +26,23 @@ module.exports=async()=>{
         const breedsDB= await Dogs.findAll({
             include:{
                 model: Temperaments,
-                through: {model: dogs_temperaments,attributes: []},
+                through: {model: dogs_temperaments/* ,attributes: [] */},
                 as: 'temperament',
-                attributes: ['name'],
+                /* attributes: ['name'] ,*/
             }
         });
-        
-        return allBreeds.concat(breedsDB);    
+        const breedsDBOrdenados=await breedsDB.map(dog=>{
+            return {
+                id:dog.id,
+                name:dog.name,
+                weight:dog.weight,
+                height:dog.height,
+                life_span:dog.life_span,
+                image:dog.image,
+                temperament:dog.temperament[0]?.name
+                }
+            }
+        )
+
+        return allBreeds.concat(breedsDBOrdenados);    
 }
