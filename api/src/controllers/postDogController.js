@@ -1,11 +1,11 @@
 const {Dogs, Temperaments,dogs_temperaments}=require('../db');
 
-module.exports=async(name, weight, height, image, life_span,temperament)=>{
-    if(!name || !weight || !height || !image || !life_span || !temperament)
+module.exports=async(name, minHeight, maxHeight, minWeight, maxWeight, image, life_span,temperament)=>{
+    if(!name || !minHeight || !maxHeight || !minWeight || !maxWeight || !image || !life_span || !temperament)
         throw new Error('Faltan datos para crear una nueva raza.')
     
     const [createdDog, created]=await Dogs.findOrCreate({
-        where: {name, weight, height, image, life_span}, 
+        where: {name, minHeight, maxHeight, minWeight, maxWeight, image, life_span}, 
         include: [{model: Temperaments, as: 'temperament'}]});
 
     //Recibe temperamentos en 1 string, los separa, los almacera por separado en BD.
