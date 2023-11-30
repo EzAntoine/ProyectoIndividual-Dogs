@@ -22,8 +22,8 @@ module.exports=async(idRaza)=>{
                 return {
                     id:detailDB.id,
                     name:detailDB.name,
-                    weight:detailDB.weight,
-                    height:detailDB.height,
+                    weight:`${detailDB.minWeight} - ${detailDB.maxWeight}`,
+                    height:`${detailDB.minWeight} - ${detailDB.maxWeight}`,
                     life_span:detailDB.life_span,
                     image:detailDB.image,
                     temperament:detailDB.temperament.map(t=>t.dataValues.name).join(', '),
