@@ -34,7 +34,7 @@ module.exports=async()=>{
                 id:dog.id,
                 name:dog.name,
                 weight:`${dog.minWeight} - ${dog.maxWeight}`,
-                height:`${dog.minWeight} - ${dog.maxWeight}`,
+                height:`${dog.minHeight} - ${dog.maxHeight}`,
                 life_span:dog.life_span,
                 image:dog.image,
                 temperament:dog.temperament.map(t=>t.dataValues.name).join(', '),
