@@ -16,7 +16,6 @@ module.exports=async(name, minHeight, maxHeight, minWeight, maxWeight, image, li
             const [newTemp,createdTemp]=await Temperaments.findOrCreate({where:{name:temp}});
             await createdDog.setTemperament(newTemp);
         })
-    
     }
     else
         throw new Error(`Error al crear. ${name} ya se encontraba en la base de datos.`);
