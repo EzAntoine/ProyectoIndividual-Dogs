@@ -16,6 +16,7 @@ const CreateBreed=()=>{
         minWeight:"",
         maxWeight:"",
         life_span:"",
+        image:"",
         temperament:"",
     });
 
@@ -26,6 +27,7 @@ const CreateBreed=()=>{
         minWeight:"",
         maxWeight:"",
         life_span:"",
+        image:"",
         temperament:"",
         vacio:"Por favor llenar todos los campos.",
       });
@@ -47,6 +49,9 @@ const CreateBreed=()=>{
                 : "",
             maxWeight:!(/^[0-9]+$/).test(input.maxWeight) || input.minWeight>input.maxWeight
                 ? "El peso máximo solo puede ser un número y debe ser mayor al mínimo."
+                : "",
+            image:!(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/).test(input.maxWeight) || input.minWeight>input.maxWeight
+                ? "Debe ingresar la URL de la imágen."
                 : "",
             vacio:!input.name || !input.minHeight || !input.maxHeight || !input.minWeight || !input.maxWeight || !input.life_span || !input.temperament
                 ? "Por favor llenar todos los campos."
@@ -102,6 +107,11 @@ const CreateBreed=()=>{
                     <label>Años de vida: </label>
                     <input type="text" name="life_span" value={input.value} onChange={handleChange}/>
                     {<span>{error.life_span}</span>}
+                </div>    
+                <div>
+                    <label>URL de la imágen: </label>
+                    <input type="text" name="image" value={input.value} onChange={handleChange}/>
+                    {<span>{error.image}</span>}
                 </div>                
                 <div>
                     <label>Temperamento: </label>
