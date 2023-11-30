@@ -92,7 +92,7 @@ const CreateBreed=()=>{
         })
     }
    
-    const handleSubmit=async (event)=>{
+    const handleSubmit=async(event)=>{
         event.preventDefault();
         const arraynewTemp=tempsCreados.temps.split(", ");
 
@@ -107,12 +107,19 @@ const CreateBreed=()=>{
         }
     }
 
-    const handleSelect = (event) => {
+    const handleSelect=(event)=> {
         setInput({
             ...input,
             temperament: [...input.temperament, event.target.value]
         })
     }
+
+    const handleDelete=(t)=> {
+        setInput({
+          ...input,
+          temperament: input.temperament.filter((temp) => temp !== t),
+        });
+      }
 
     return(
         <div>
@@ -170,6 +177,7 @@ const CreateBreed=()=>{
                         <span>Temperamentos Seleccionados: {input.temperament.map(t=>(
                             <div key={t}>
                                 <p>{t}</p>
+                                <button onClick={() => handleDelete(t)}>x</button>
                             </div>))}
                         </span>
                     </div>
