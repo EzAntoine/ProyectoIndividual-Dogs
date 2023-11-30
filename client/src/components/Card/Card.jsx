@@ -13,7 +13,7 @@ const Card=({id,name,weight,temperament,image})=>{
                     <img className={style.dogImage} src={image} alt={name} />
                 </div>
                 <h2>Temperamento: {temperament}</h2>
-                <h2>Peso: {weight} lb.</h2>
+                <h2>Peso: {weight}</h2>
             </Link>
         </div>
     )

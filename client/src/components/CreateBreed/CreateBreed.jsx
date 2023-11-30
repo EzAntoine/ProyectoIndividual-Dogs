@@ -1,13 +1,20 @@
 /* Styles */
 import "./CreateBreed.module.css";
 /* Hooks */
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {Link} from 'react-router-dom';
 /* Dependencies */
-import { createBreed } from "../../redux/actions";
+import { createBreed, getTemperaments } from "../../redux/actions";
 
 const CreateBreed=()=>{
     const dispatch=useDispatch();
+    const temperamentos=useSelector(state=>state.breedTemperaments
+        .sort((a,b)=>{
+            if(a<b)return -1;
+            else return 1;
+        }) //Ordeno los temperamentos para la seleccion.
+    )
 
     const [input,setInput]=useState({
         name:"",
@@ -17,8 +24,12 @@ const CreateBreed=()=>{
         maxWeight:"",
         life_span:"",
         image:"",
-        temperament:"",
+        temperament:[],
     });
+
+    const [tempsCreados, setTempCreados]=useState({
+        temps:"",
+    })
 
     const [error, setError] = useState({
         name:"",
@@ -28,7 +39,7 @@ const CreateBreed=()=>{
         maxWeight:"",
         life_span:"",
         image:"",
-        temperament:"",
+        temperament:[],
         vacio:"Por favor llenar todos los campos.",
       });
 
@@ -59,24 +70,48 @@ const CreateBreed=()=>{
         }))                           
       }
 
+    useEffect(() => {
+        dispatch(getTemperaments());
+    }, [dispatch]);
+
     const handleChange=(event)=>{
         setInput({
             ...input,
-            [event.target.name]:event.target.value
+            [event.target.name]:event.target.value,
         })
         validate({
             ...input,
             [event.target.name]:event.target.value,
         })
     }
+
+    const handleChangeTemp=(event)=>{
+        setTempCreados({
+            ...tempsCreados,
+            temps:event.target.value,
+        })
+    }
    
     const handleSubmit=async (event)=>{
         event.preventDefault();
-        const response=await dispatch(createBreed(input));
-        console.log(response.payload.id);
-        if(response.payload.id){
-            window.alert(`Raza creada con éxito, con ID: ${response.payload.id}`);
+        const arraynewTemp=tempsCreados.temps.split(", ");
+
+        const newInput={
+            ...input,
+            temperament:[...input.temperament,...arraynewTemp],
         }
+        setInput(newInput);
+        const response=await dispatch(createBreed(newInput));
+        if(response.payload.id){
+            window.alert(`${input.name} creado con éxito, con ID: ${response.payload.id}`);
+        }
+    }
+
+    const handleSelect = (event) => {
+        setInput({
+            ...input,
+            temperament: [...input.temperament, event.target.value]
+        })
     }
 
     return(
@@ -119,11 +154,31 @@ const CreateBreed=()=>{
                 </div>                
                 <div>
                     <label>Temperamento: </label>
-                    <input type="text" name="temperament" value={input.value} onChange={handleChange}/>
+                    <input type="text" name="temperament" value={input.value} onChange={handleChangeTemp}/>
                     {<span>{error.temperament}</span>}
+                    <div>
+                        <label>Seleccionar Temperamentos: </label>
+                        <select onChange={handleSelect}>
+                            <option value="defaultOption" disabled>Seleccionar</option>
+                                {temperamentos.map(temp => {
+                                    return (                    
+                                        <option name={temp} key={temp}>{temp}</option> 
+                                    )
+                                    })
+                                }
+                        </select>
+                        <span>Temperamentos Seleccionados: {input.temperament.map(t=>(
+                            <div key={t}>
+                                <p>{t}</p>
+                            </div>))}
+                        </span>
+                    </div>
                 </div>
 
                 {<span>{error.vacio}</span>}
+                <Link to="/home">
+                <button>Cancel</button>
+                </Link>
                 {<button type="submit" onClick={handleSubmit} disabled={error.vacio}>Crear</button>}
             </form>
         </div>

@@ -10,7 +10,7 @@ module.exports=async(name, minHeight, maxHeight, minWeight, maxWeight, image, li
 
     //Recibe temperamentos en 1 string, los separa, los almacera por separado en BD.
     if(created){
-            const arrayTemps=temperament?.split(',').map(temp=>temp.trim()); //Para cada string, separo los temperamentos y borro espacios.
+        const arrayTemps=temperament?.split(',').map(temp=>temp.trim()); //Para cada string, separo los temperamentos y borro espacios.
 
         arrayTemps.forEach(async temp=>{
             const [newTemp,createdTemp]=await Temperaments.findOrCreate({where:{name:temp}});
