@@ -2,8 +2,12 @@
 import "./CreateBreed.module.css";
 /* Hooks */
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+/* Dependencies */
+import { createBreed } from "../../redux/actions";
 
 const CreateBreed=()=>{
+    const dispatch=useDispatch();
 
     const [input,setInput]=useState({
         name:"",
@@ -29,31 +33,28 @@ const CreateBreed=()=>{
       const validate=(input)=>{
         setError((err)=>({
             ...err,
-            name:!(/^[a-zA-Z]+$/).test(input.name)
-                ? "El nombre solo puede incluir letras."
+            name:!(/^[a-zA-Z -]+$/).test(input.name)
+                ? "El nombre no puede incluir números."
                 : "",
-            minHeight:
-                !(/^[0-9]+$/).test(input.minHeight) || input.minHeight >= input.maxHeight
-                  ? "La altura mínima solo puede ser un número y debe ser menor a la máxima."
-                  : "",
-            maxHeight:!(/^[0-9]+$/).test(input.maxHeight) || input.minHeight>=input.maxHeight
-                    ? "La altura máxima solo puede ser un número y debe ser mayor a la mínima."
-                    : "",
+            minHeight:!(/^[0-9]+$/).test(input.minHeight) || input.minHeight > input.maxHeight
+                ? "La altura mínima solo puede ser un número y debe ser menor a la máxima."
+                : "",
+            maxHeight:!(/^[0-9]+$/).test(input.maxHeight) || input.minHeight>input.maxHeight
+                ? "La altura máxima solo puede ser un número y debe ser mayor a la mínima."
+                : "",
             minWeight:!(/^[0-9]+$/).test(input.minWeight) || input.minWeight>input.maxWeight
-                    ? "El peso mínimo solo puede ser un número y debe ser menor al máximo."
-                    : "",
-            maxWeight:!(/^[0-9]+$/).test(input.maxWeight) || input.minWeight>=input.maxWeight
-                    ? "El peso máximo solo puede ser un número y debe ser mayor al mínimo."
-                    : "",
+                ? "El peso mínimo solo puede ser un número y debe ser menor al máximo."
+                : "",
+            maxWeight:!(/^[0-9]+$/).test(input.maxWeight) || input.minWeight>input.maxWeight
+                ? "El peso máximo solo puede ser un número y debe ser mayor al mínimo."
+                : "",
             vacio:!input.name || !input.minHeight || !input.maxHeight || !input.minWeight || !input.maxWeight || !input.life_span || !input.temperament
-                    ? "Por favor llenar todos los campos."
-                    : "",
+                ? "Por favor llenar todos los campos."
+                : "",
         }))                           
       }
 
     const handleChange=(event)=>{
-        console.log(input);
-        console.log(error);
         setInput({
             ...input,
             [event.target.name]:event.target.value
@@ -63,10 +64,15 @@ const CreateBreed=()=>{
             [event.target.name]:event.target.value,
         })
     }
+    
+    const handleSubmit=(event)=>{
+        event.preventDefault();
+        dispatch(createBreed(input))
+    }
 
     return(
         <div>
-            <form /* onSubmit={""} */>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label>Nombre de raza: </label>
                     <input type="text" name="name" value={input.value} onChange={handleChange}/>
@@ -104,7 +110,7 @@ const CreateBreed=()=>{
                 </div>
 
                 {<span>{error.vacio}</span>}
-                {<button type="submit" disabled={error.vacio}>Submit</button>}
+                {<button type="submit" onClick={handleSubmit} disabled={error.vacio}>Crear</button>}
             </form>
         </div>
     )
