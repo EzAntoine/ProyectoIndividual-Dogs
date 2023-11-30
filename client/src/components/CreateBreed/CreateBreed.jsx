@@ -69,10 +69,14 @@ const CreateBreed=()=>{
             [event.target.name]:event.target.value,
         })
     }
-    
-    const handleSubmit=(event)=>{
+   
+    const handleSubmit=async (event)=>{
         event.preventDefault();
-        dispatch(createBreed(input))
+        const response=await dispatch(createBreed(input));
+        console.log(response.payload.id);
+        if(response.payload.id){
+            window.alert(`Raza creada con éxito, con ID: ${response.payload.id}`);
+        }
     }
 
     return(

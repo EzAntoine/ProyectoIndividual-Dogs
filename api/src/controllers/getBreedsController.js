@@ -33,8 +33,8 @@ module.exports=async()=>{
             return {
                 id:dog.id,
                 name:dog.name,
-                weight:dog.weight,
-                height:dog.height,
+                weight:`${dog.minWeight} - ${dog.maxWeight}`,
+                height:`${dog.minWeight} - ${dog.maxWeight}`,
                 life_span:dog.life_span,
                 image:dog.image,
                 temperament:dog.temperament.map(t=>t.dataValues.name).join(', '),
