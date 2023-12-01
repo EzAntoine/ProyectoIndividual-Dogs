@@ -1,0 +1,15 @@
+body {
+    background-image: url('../../assets/DomiLanding.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.landing {
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 50px;
+    font-size: 40px;
+    color:rgb(204, 180, 114);
+    font-family: "Bigelow Rules";
+}

@@ -7,19 +7,24 @@ body {
     -moz-osx-font-smoothing: grayscale;
     background-color: rgb(230, 217, 176);
     text-align: center;
+    background-image: url('../../assets/huesosyhuellas.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
   }
-  
-/*   code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  } */
 
   .title{
-    margin-top: 75px;
-    margin-bottom: 50px;
+    width: 100vh;
+    height: 10vh;
+    padding: 10px;
+    margin-top: 30px;
+    margin-bottom: 20px;
     font-size: 60px;
     color:rgb(80, 26, 26);
     font-family: "Bigelow Rules";
+    background-color: rgb(204, 180, 114);
+    border: 1px solid rgb(80, 26, 26);
+    border-radius: 6px;
   }
   
   .home{

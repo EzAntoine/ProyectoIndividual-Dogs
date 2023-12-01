@@ -1,9 +1,10 @@
-
+/* Styles */
+import style from './Landing.module.css'
 
 const Landing=()=>{
     return(
-        <div>
-            <h2>Soy el Landing</h2>
+        <div className={style.landing}>
+            <h2>Ingresar a Perritos Web</h2>
         </div>
     )
 }

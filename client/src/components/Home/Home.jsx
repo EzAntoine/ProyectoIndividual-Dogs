@@ -39,7 +39,7 @@ const Home=()=>{
     
     return(
         <div className={style.home}>
-            <h2 className={style.title}>Home</h2>
+            <h2 className={style.title}>Perritos Web</h2>
             <NavBar handleChange={handleChange} handleSubmit={handleSubmit}/>
             <Cards allBreeds={filtrados}/>
         </div>
