@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10vh;
+}
+
+.button {
+    background-color: black;
+    border-radius: 5px;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: larger;
+    color: bisque;
+    cursor: pointer;
+}
+
+.input {
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 20px;
+    height: 17px;
+}

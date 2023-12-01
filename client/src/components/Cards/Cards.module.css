@@ -1,4 +1,12 @@
 .cardsList{
+    width: 100vw;
+    height: 100vw;
+    box-sizing: border-box;
+    outline: none;
+    font-family: system-ui;
+}
+
+.cardsListPage {
     width: 85vw;
     margin: 0 auto;
     display: grid;
