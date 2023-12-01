@@ -1,34 +1,34 @@
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-color: rgb(230, 217, 176);
-    text-align: center;
-    background-image: url('../../assets/huesosyhuellas.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-  }
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(230, 217, 176);
+  text-align: center;
+  background-image: url('../../assets/huesosyhuellas.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
 
-  .title{
-    width: 100vh;
-    height: 10vh;
-    padding: 10px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    font-size: 60px;
-    color:rgb(80, 26, 26);
-    font-family: "Bigelow Rules";
-    background-color: rgb(204, 180, 114);
-    border: 1px solid rgb(80, 26, 26);
-    border-radius: 6px;
-  }
-  
-  .home{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.title{
+  width: 100vh;
+  height: 10vh;
+  padding: 10px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 60px;
+  color:rgb(80, 26, 26);
+  font-family: "Bigelow Rules";
+  background-color: rgb(204, 180, 114);
+  border: 1px solid rgb(80, 26, 26);
+  border-radius: 6px;
+}
+
+.home{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

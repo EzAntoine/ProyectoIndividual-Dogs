@@ -29,7 +29,7 @@ const reducer=(state=initialState,action)=>{
         case POST_BREED:
             return{
                 ...state,
-                allBreeds:action.payload,
+                allBreeds:[...state.allBreeds,action.payload],
             }
         case GET_TEMPERAMENTS:
             return{

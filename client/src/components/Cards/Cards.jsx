@@ -11,8 +11,7 @@ const Cards=({allBreeds})=>{
     
     const [pagina,setPagina]=useState(1);
     const [dogPorPag,setDogPorPag]=useState(8);
-    const max=Math.ceil(breeds.length/dogPorPag);
-
+    let max=Math.ceil(breeds.length/dogPorPag);
 
     return(
         <div className={style.cardsList}>

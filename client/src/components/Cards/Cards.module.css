@@ -16,3 +16,28 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-gap: 20px;
 }
+
+.buttons {
+    width:100px;
+    height: 40px;
+    padding: 10px;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid rgb(47, 49, 44) 1px;
+    border-radius: 7px;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 5px gray;
+    background-color: rgb(204, 180, 114);
+    cursor: pointer;
+    font-size: 0.9em; 
+    z-index: 1;
+    font-weight: bold;
+  }
+  
+.buttons:hover{
+    background-color:rgb(212, 184, 105);
+    color: black;
+    scale: 1.1;
+}

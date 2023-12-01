@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {Link} from 'react-router-dom';
 /* Dependencies */
 import { createBreed, getTemperaments } from "../../redux/actions";
-import NavBar from "../NavBar/NavBar";
 
 const CreateBreed=()=>{
     const dispatch=useDispatch();
@@ -62,10 +61,10 @@ const CreateBreed=()=>{
             maxWeight:!(/^[0-9]+$/).test(input.maxWeight) || input.minWeight>input.maxWeight
                 ? "El peso máximo solo puede ser un número y debe ser mayor al mínimo."
                 : "",
-            image:!(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/).test(input.maxWeight) || input.minWeight>input.maxWeight
+            image:!(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/).test(input.image)
                 ? "Debe ingresar la URL de la imágen."
                 : "",
-            vacio:!input.name || !input.minHeight || !input.maxHeight || !input.minWeight || !input.maxWeight || !input.life_span || !input.temperament
+            vacio:!input.name || !input.minHeight || !input.maxHeight || !input.minWeight || !input.maxWeight || !input.life_span || !input.temperament || !input.image
                 ? "Por favor llenar todos los campos."
                 : "",
         }))                           
@@ -126,9 +125,11 @@ const CreateBreed=()=>{
 
     return(
         <div>
-            <div>
+            <div className={style.headContainer}>
                 <h2 className={style.title}>Perritos Web</h2>
-                <NavBar handleChange={handleChange} handleSubmit={handleSubmit}/>
+                <Link to='/home'>
+                    <button className={style.button}>Home</button>
+                </Link>
             </div>
             <form className={style.form} onSubmit={handleSubmit}>
                 <div>

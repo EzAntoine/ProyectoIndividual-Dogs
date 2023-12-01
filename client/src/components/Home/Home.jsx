@@ -36,7 +36,7 @@ const Home=()=>{
         /* return(()=>{
             clearDetail() //Al desmontar, borra el detail para que no quere guardado.
         }) */
-    },[dispatch])
+    },[dispatch]);
 
     
     return(

@@ -17,7 +17,7 @@ const NavBar=({handleChange,handleSubmit})=>{
                 </form>
             }
             <Link to='./home'>
-                <button className={style.buttons} >Home</button>
+                <button className={style.buttons}>Home</button>
             </Link>
             <Link to='./createBreed'>
                 <button className={style.buttons}>Crear Raza</button>
