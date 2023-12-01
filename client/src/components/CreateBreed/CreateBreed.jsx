@@ -171,30 +171,35 @@ const CreateBreed=()=>{
                     <input className={style.input} type="text" name="temperament" value={input.value} onChange={handleChangeTemp}/>
                     {<span className={style.span}>{error.temperament}</span>}
                     <div>
-                        <label>Seleccionar Temperamentos: </label>
-                        <select onChange={handleSelect}>
-                            <option value="defaultOption" disabled>Seleccionar</option>
-                                {temperamentos.map(temp => {
-                                    return (                    
-                                        <option name={temp} key={temp}>{temp}</option> 
-                                    )
-                                    })
-                                }
-                        </select>
-                        <span className={style.tempSelect}>Temperamentos Seleccionados: {input.temperament.map(t=>(
-                            <div className={style.seleccionados} key={t}>
-                                <p>{t}</p>
-                                <button className={style.closeButton} onClick={() => handleDelete(t)}>x</button>
-                            </div>))}
-                        </span>
+                        <div>
+                            <label>Seleccionar Temperamentos: </label>
+                            <select onChange={handleSelect}>
+                                <option value="defaultOption" disabled>Seleccionar</option>
+                                    {temperamentos.map(temp => {
+                                        return (                    
+                                            <option name={temp} key={temp}>{temp}</option> 
+                                        )
+                                        })
+                                    }
+                            </select>
+                        </div>
+                        <div>
+                            <span className={style.tempSelect}>Temperamentos Seleccionados: {input.temperament.map(t=>(
+                                <div className={style.seleccionados} key={t}>
+                                    <p>{t}</p>
+                                    <button className={style.closeButton} onClick={() => handleDelete(t)}>x</button>
+                                </div>))}
+                            </span>
+                        </div>
                     </div>
                 </div>
-
                 {<span className={style.span}>{error.vacio}</span>}
-                <Link to="/home">
-                    <button className={style.button}>Cancel</button>
-                </Link>
-                {<button className={style.button} type="submit" onClick={handleSubmit} disabled={error.vacio}>Crear</button>}
+                <div className={style.buttonContainer}>
+                    <Link to="/home">
+                        <button className={style.button}>Cancel</button>
+                    </Link>
+                    {<button className={style.button} type="submit" onClick={handleSubmit} disabled={error.vacio}>Crear</button>}
+                </div>
             </form>
         </div>
     )

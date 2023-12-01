@@ -22,7 +22,6 @@ body {
     margin-top: 20%;
     margin-left: 20%;
     max-width: 350px;
-    /* margin: 0 auto; */
     background-color: rgb(204, 180, 114);
     border-radius: 6px;
     border: solid black 1px;
@@ -38,6 +37,13 @@ body {
     font-weight: bold;
   }
 
+  .buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+  }
+
   .button {
     width:100px;
     height: 40px;
@@ -50,7 +56,7 @@ body {
     border-radius: 7px;
     box-sizing: border-box;
     box-shadow: inset 0 0 5px gray;
-    background-color: rgb(204, 180, 114);
+    background-color: wheat;
     cursor: pointer;
     font-size: 0.9em; 
   }
