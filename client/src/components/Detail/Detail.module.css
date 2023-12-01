@@ -1,39 +1,83 @@
 .detailContainer {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh; 
-    width: 130vh;
-    background-color: rgb(248, 227, 169); /* Color de fondo del contenedor */
-    border: 2px solid black;
-    border-radius: 10px;
-    color: rgb(0, 0, 0);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; 
+  width: 130vh;
+  background-color: rgb(248, 227, 169); /* Color de fondo del contenedor */
+  border: 2px solid black;
+  border-radius: 10px;
+  color: rgb(0, 0, 0);
+}
+
+.leftContent {
+  flex: 1; /* Divide el contenedor en dos, dando más espacio a la izquierda */
+  padding: 20px;
+  text-align: left;
 }
   
-  .leftContent {
-    flex: 1; /* Divide el contenedor en dos, dando más espacio a la izquierda */
-    padding: 20px;
-    text-align: left;
-  }
-  
-  .rightContent {
-    flex: 1;
-    display: flex;
-    padding: 20px;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .rightContent img {
-    max-width: 100%;
-    max-height: auto;
-    border: 1px solid  rgb(226, 226, 226);
-    border-radius: 10px;
-  }
-  .rightContent h2 {
-    margin: 8px 0;
-  }
+.rightContent {
+  flex: 1;
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rightContent img {
+  max-width: 100%;
+  max-height: auto;
+  border: 1px solid  rgb(226, 226, 226);
+  border-radius: 10px;
+}
+.rightContent h2 {
+  margin: 8px 0;
+}
+
+.buttonConteiner {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  display:flex;
+  margin-top: 2%;
+  margin-bottom: 100px;
+  left: 0;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+} 
+
+.buttons {
+  width:100px;
+  height: 40px;
+  padding: 10px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid rgb(47, 49, 44) 1px;
+  border-radius: 7px;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 5px gray;
+  background-color: rgb(204, 180, 114);
+  cursor: pointer;
+  font-size: 0.9em; 
+  z-index: 1;
+  font-weight: bold;
+}
+
+.buttons:hover{
+  background-color:rgb(212, 184, 105);
+  color: black;
+  scale: 1.1;
+}
+
+.buttonConteiner a {
+  text-decoration: initial;
+  color: initial;
+}

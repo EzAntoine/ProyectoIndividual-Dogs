@@ -10,7 +10,7 @@ const NavBar=({handleChange,handleSubmit})=>{
 
     return(
         <div className={style.navConteiner}>
-            {pathname !=='/createBreed' &&
+            {pathname ==='/home' &&
                 <form className={style.searchBox} onChange={handleChange}>
                     <input className={style.searchInput} placeholder="Buscar por nombre" type="search"/>
                     <button className={style.buttonSearch} type="submit" onClick={handleSubmit}></button>

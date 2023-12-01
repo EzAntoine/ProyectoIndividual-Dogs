@@ -7,6 +7,7 @@ import Cards from "../Cards/Cards";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBreeds, getBreedByName } from "../../redux/actions";
+import { useLocation } from "react-router-dom";
 
 const Home=()=>{
 
@@ -14,6 +15,7 @@ const Home=()=>{
     const allBreeds=useSelector(state=>state.allBreeds);
     const [filtrados,setFiltrados]=useState(allBreeds);
     const [searchString,setSearchString]=useState("");
+    const {pathname}=useLocation();
 
     useEffect(() => {
         setFiltrados(allBreeds);
@@ -39,8 +41,8 @@ const Home=()=>{
     
     return(
         <div className={style.home}>
-            <h2 className={style.title}>Perritos Web</h2>
-            <NavBar handleChange={handleChange} handleSubmit={handleSubmit}/>
+            {pathname!=='/' && <h2 className={style.title}>Perritos Web</h2>}
+            {pathname!=='/' && <NavBar handleChange={handleChange} handleSubmit={handleSubmit}/>}
             <Cards allBreeds={filtrados}/>
         </div>
     )

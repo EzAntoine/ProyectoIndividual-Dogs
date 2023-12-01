@@ -12,7 +12,6 @@
     /* z-index: 1; */
 }
 
-
 .buttons {
     width:100px;
     height: 40px;
@@ -28,9 +27,11 @@
     background-color: rgb(204, 180, 114);
     cursor: pointer;
     font-size: 0.9em; 
+    z-index: 1;
+    font-weight: bold;
 }
 
-.buttons a {
+.navConteiner a {
     text-decoration: initial;
     color: initial;
 }
@@ -78,7 +79,7 @@
       width: 70%;
       height: 38px;
       padding: 12px 20px;
-      border: solid rgb(156, 130, 14) 1px;
+      border: solid rgb(156, 130, 14) 2px;
       border-radius: 7px 7px 7px 7px;
       box-sizing: border-box;
       box-shadow: inset 0 0 5px gray;

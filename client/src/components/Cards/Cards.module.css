@@ -5,6 +5,8 @@
     outline: none;
     font-family: system-ui;
     margin-top: 10%;
+    top: 0;
+    padding-top: 0;
 }
 
 .cardsListPage {
