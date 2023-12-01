@@ -1,6 +1,7 @@
 .cardContainer {
     display:flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
     background-color: rgb(204, 180, 114);
     width: 17vw;
@@ -37,11 +38,19 @@
     background-color: rgb(212, 184, 105);
 }
 
-.cardContainer h2 {
+/* .cardContainer h2 {
     font-size: 1.4em; 
-}
+} */
 
 .cardContainer a {
     text-decoration: initial;
     color: initial;
-  }
+}
+
+.shortName {
+    font-size: 1.4em; 
+}
+
+.atributes {
+    font-size: 1.2em;
+}
