@@ -1,3 +1,46 @@
+.navConteiner {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display:flex;
+    margin-top: 10%;
+    margin-bottom: 100px;
+    left: 0;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    /* z-index: 1; */
+}
+
+
+.buttons {
+    width:100px;
+    height: 40px;
+    padding: 10px;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid rgb(47, 49, 44) 1px;
+    border-radius: 7px;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 5px gray;
+    background-color: rgb(204, 180, 114);
+    cursor: pointer;
+    font-size: 0.9em; 
+}
+
+.buttons a {
+    text-decoration: initial;
+    color: initial;
+}
+
+.buttons:hover{
+    background-color:rgb(212, 184, 105);
+    color: black;
+    scale: 1.1;
+}
+
 .searchBox{
     -webkit-appearance: none;
     border: none;
@@ -6,4 +49,42 @@
     width: 150px;
     line-height: 30px;
     margin-bottom: 30px;
+    margin-top: 30px;  
+    height: 40px;
+    width: 25%;
+    display:flex;
+    justify-content: right;
+    margin-bottom: 25px;
+    position: absolute;
+    right: 0;
+}
+
+.buttonSearch {
+    background-image: url('../../assets/lupaByN.png');
+    background-size: auto;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    margin-right:10px;
+    margin-left: 5px;
+}
+
+  .searchInput {
+      width: 70%;
+      height: 38px;
+      padding: 12px 20px;
+      border: solid rgb(156, 130, 14) 1px;
+      border-radius: 7px 7px 7px 7px;
+      box-sizing: border-box;
+      box-shadow: inset 0 0 5px gray;
+      color: black;
+  }
+ 
+.buttonSearch:hover {
+    scale: 1.1;
 }

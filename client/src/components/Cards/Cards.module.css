@@ -4,6 +4,7 @@
     box-sizing: border-box;
     outline: none;
     font-family: system-ui;
+    margin-top: 10%;
 }
 
 .cardsListPage {

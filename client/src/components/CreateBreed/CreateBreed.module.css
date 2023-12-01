@@ -1,0 +1,19 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title{
+    width: 100vh;
+    height: 10vh;
+    padding: 10px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 60px;
+    color:rgb(80, 26, 26);
+    font-family: "Bigelow Rules";
+    background-color: rgb(204, 180, 114);
+    border: 1px solid rgb(80, 26, 26);
+    border-radius: 6px;
+  }

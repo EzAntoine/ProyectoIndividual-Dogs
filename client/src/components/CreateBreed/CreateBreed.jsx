@@ -1,11 +1,12 @@
 /* Styles */
-import "./CreateBreed.module.css";
+import style from "./CreateBreed.module.css";
 /* Hooks */
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {Link} from 'react-router-dom';
 /* Dependencies */
 import { createBreed, getTemperaments } from "../../redux/actions";
+import NavBar from "../NavBar/NavBar";
 
 const CreateBreed=()=>{
     const dispatch=useDispatch();
@@ -125,7 +126,11 @@ const CreateBreed=()=>{
 
     return(
         <div>
-            <form onSubmit={handleSubmit}>
+            <div>
+                <h2 className={style.title}>Perritos Web</h2>
+                <NavBar handleChange={handleChange} handleSubmit={handleSubmit}/>
+            </div>
+            <form className={style.form} onSubmit={handleSubmit}>
                 <div>
                     <label>Nombre de raza: </label>
                     <input type="text" name="name" value={input.value} onChange={handleChange}/>
