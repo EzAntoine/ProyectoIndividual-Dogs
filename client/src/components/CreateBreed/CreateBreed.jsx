@@ -11,7 +11,7 @@ const CreateBreed=()=>{
     const dispatch=useDispatch();
     const temperamentos=useSelector(state=>state.breedTemperaments
         .sort((a,b)=>{
-            if(a<b)return -1;
+            if(a.name<b.name)return -1;
             else return 1;
         }) //Ordeno los temperamentos para la seleccion.
     )
@@ -168,6 +168,9 @@ const CreateBreed=()=>{
                     {<span className={style.span}>{error.image}</span>}
                 </div>                
                 <div>
+                    <img src={input.image} alt={input.name} style={{width:'300px'}}/>
+                </div>
+                <div>
                     <label>Temperamento: </label>
                     <input className={style.input} type="text" name="temperament" value={input.value} onChange={handleChangeTemp}/>
                     {<span className={style.span}>{error.temperament}</span>}
@@ -178,7 +181,7 @@ const CreateBreed=()=>{
                                 <option value="defaultOption" disabled>Seleccionar</option>
                                     {temperamentos.map(temp => {
                                         return (                    
-                                            <option name={temp} key={temp}>{temp}</option> 
+                                            <option name={temp.name} key={temp.id}>{temp.name}</option> 
                                         )
                                         })
                                     }
