@@ -10,15 +10,16 @@ import CreateBreed from "./components/CreateBreed/CreateBreed";
 
 function App() {
   return (
-      <div className="App">
-        <Switch>
-          <Route exact path='/' component={Landing}/>
-          <Route exact path='/home' component={Home}/>
-          <Route path='/home/:id' component={Detail}/>
-          <Route path='/createBreed' component={CreateBreed}/>
-          {/* <Route path='/about' element={<About/>}/> */}
-        </Switch>
-      {/* {<h1>Henry Dogs</h1>} */}
+      <div className="App"> 
+        {/* Aca podriamos renderizar la navBar en todas las rutas que querramos. */}
+        <div>
+          <Switch>
+            <Route exact path='/' component={Landing}/>
+            <Route exact path='/home' component={Home}/>
+            <Route path='/home/:id' component={Detail}/>
+            <Route path='/createBreed' component={CreateBreed}/>
+          </Switch>
+        </div>
       </div>
   );
 }
