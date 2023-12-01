@@ -133,43 +133,43 @@ const CreateBreed=()=>{
             <form className={style.form} onSubmit={handleSubmit}>
                 <div>
                     <label>Nombre de raza: </label>
-                    <input type="text" name="name" value={input.value} onChange={handleChange}/>
-                    {<span>{error.name}</span>}
+                    <input className={style.input} type="text" name="name" value={input.value} onChange={handleChange}/>
+                    {<span className={style.span}>{error.name}</span>}
                 </div>
                 <div>
                     <label>Altura mínima: </label>
-                    <input type="text" name="minHeight" value={input.value} onChange={handleChange}/>
-                    {<span>{error.minHeight}</span>}
+                    <input className={style.input} type="text" name="minHeight" value={input.value} onChange={handleChange}/>
+                    {<span className={style.span}>{error.minHeight}</span>}
                 </div>                
                 <div>
                     <label>Altura máxima: </label>
-                    <input type="text" name="maxHeight" value={input.value} onChange={handleChange}/>
-                    {<span>{error.maxHeight}</span>}
+                    <input className={style.input} type="text" name="maxHeight" value={input.value} onChange={handleChange}/>
+                    {<span className={style.span}>{error.maxHeight}</span>}
                 </div>                
                 <div>
                     <label>Peso mínimo: </label>
-                    <input type="text" name="minWeight" value={input.value} onChange={handleChange}/>
-                    {<span>{error.minWeight}</span>}
+                    <input className={style.input} type="text" name="minWeight" value={input.value} onChange={handleChange}/>
+                    {<span className={style.span}>{error.minWeight}</span>}
                 </div>
                 <div>
                     <label>Peso máximo: </label>
-                    <input type="text" name="maxWeight" value={input.value} onChange={handleChange}/>
-                    {<span>{error.maxWeight}</span>}
+                    <input className={style.input} type="text" name="maxWeight" value={input.value} onChange={handleChange}/>
+                    {<span className={style.span}>{error.maxWeight}</span>}
                 </div>
                 <div>
                     <label>Años de vida: </label>
-                    <input type="text" name="life_span" value={input.value} onChange={handleChange}/>
-                    {<span>{error.life_span}</span>}
+                    <input className={style.input} type="text" name="life_span" value={input.value} onChange={handleChange}/>
+                    {<span className={style.span}>{error.life_span}</span>}
                 </div>    
                 <div>
                     <label>URL de la imágen: </label>
-                    <input type="text" name="image" value={input.value} onChange={handleChange}/>
-                    {<span>{error.image}</span>}
+                    <input className={style.input} type="text" name="image" value={input.value} onChange={handleChange}/>
+                    {<span className={style.span}>{error.image}</span>}
                 </div>                
                 <div>
                     <label>Temperamento: </label>
-                    <input type="text" name="temperament" value={input.value} onChange={handleChangeTemp}/>
-                    {<span>{error.temperament}</span>}
+                    <input className={style.input} type="text" name="temperament" value={input.value} onChange={handleChangeTemp}/>
+                    {<span className={style.span}>{error.temperament}</span>}
                     <div>
                         <label>Seleccionar Temperamentos: </label>
                         <select onChange={handleSelect}>
@@ -181,20 +181,20 @@ const CreateBreed=()=>{
                                     })
                                 }
                         </select>
-                        <span>Temperamentos Seleccionados: {input.temperament.map(t=>(
-                            <div key={t}>
+                        <span className={style.tempSelect}>Temperamentos Seleccionados: {input.temperament.map(t=>(
+                            <div className={style.seleccionados} key={t}>
                                 <p>{t}</p>
-                                <button onClick={() => handleDelete(t)}>x</button>
+                                <button className={style.closeButton} onClick={() => handleDelete(t)}>x</button>
                             </div>))}
                         </span>
                     </div>
                 </div>
 
-                {<span>{error.vacio}</span>}
+                {<span className={style.span}>{error.vacio}</span>}
                 <Link to="/home">
-                <button>Cancel</button>
+                    <button className={style.button}>Cancel</button>
                 </Link>
-                {<button type="submit" onClick={handleSubmit} disabled={error.vacio}>Crear</button>}
+                {<button className={style.button} type="submit" onClick={handleSubmit} disabled={error.vacio}>Crear</button>}
             </form>
         </div>
     )

@@ -11,9 +11,6 @@ const NavBar=({handleChange,handleSubmit})=>{
                 <input className={style.searchInput} placeholder="Buscar por nombre" type="search"/>
                 <button className={style.buttonSearch} type="submit" onClick={handleSubmit}></button>
             </form>
-            <Link to='./about'>
-                <button className={style.buttons} >About</button>
-            </Link>
             <Link to='./home'>
                 <button className={style.buttons} >Home</button>
             </Link>
