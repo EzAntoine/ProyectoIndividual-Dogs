@@ -41,12 +41,13 @@ export const getBreedByName=(breed)=>{
 export const createBreed=(breed)=>{
     return async(dispatch) => {
         try {
-           const {data}=await axios.post(`http://localhost:3001/dogs`, breed)
+           const {data}=await axios.post(`http://localhost:3001/dogs`, breed);
            return dispatch({
             type: POST_BREED, 
             payload: data
         });
-        } catch (error) {window.alert(error.message)};
+        } catch (error) {
+            return ({error: error.response.data.error})};
     };
 }
 
@@ -67,8 +68,6 @@ export const filterBreedsOrigen=(origen)=>{
 }
 
 export const filterTemps=(temperamento)=>{
-    console.log("Entro a la action con"+temperamento);
-
     return {type: FILTER_TEMPS, payload:temperamento}
 }
 

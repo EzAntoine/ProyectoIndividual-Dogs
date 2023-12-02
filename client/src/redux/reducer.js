@@ -5,9 +5,6 @@ const initialState={
     copyBreeds:[],
     breedDetail:[],
     allTemperaments:[],
-    //filteredBreeds:[],
-    //filteredTemperaments:[],
-    //breedsOrdered:[]
 }
 
 const reducer=(state=initialState,action)=>{

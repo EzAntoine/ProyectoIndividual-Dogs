@@ -3,7 +3,7 @@ const postDogController=require('../controllers/postDogController');
 module.exports=async(req,res)=>{
     const {name, minHeight, maxHeight, minWeight, maxWeight, image, life_span,temperament}=req.body;
     try {
-        temperamentString=temperament.join(", ");
+        const temperamentString=temperament.join(", "); //Transforma el array de temperamentos en un String.
         const origen="BD";
         const newDog=await postDogController(name, minHeight, maxHeight, minWeight, maxWeight, image, life_span,temperamentString,origen);
     

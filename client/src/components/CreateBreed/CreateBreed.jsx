@@ -102,11 +102,11 @@ const CreateBreed=()=>{
         }
         setInput(newInput);
         const response=await dispatch(createBreed(newInput));
-        if(response){
+        if(!response.error){
             window.alert(`${input.name} creado con éxito, con ID: ${response.payload.id}`);
         }
         else
-            window.alert(`Ocurrió un error al crear ${input.name}, por favor intente nuevamente.`);
+            window.alert(response.error);
     }
 
     const handleSelect=(event)=> {

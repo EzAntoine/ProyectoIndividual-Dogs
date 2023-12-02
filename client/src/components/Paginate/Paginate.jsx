@@ -23,7 +23,7 @@ export const Paginate=({pagina,setPagina,max})=>{
     return(
         <div className={style.container}>
             <button className={style.button} onClick={prevPage}> &lt; </button>
-            <input className={style.input} name='page' autoComplete='off' value={input}/>
+            <input className={style.input} name='page' autoComplete='off' value={input} readOnly/>
             <p> - {max}</p>
             <button className={style.button} onClick={nextPage}> &gt; </button>
         </div>
