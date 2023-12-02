@@ -17,7 +17,8 @@ module.exports=async()=>{
                 height:dog.height.imperial,
                 life_span:dog.life_span,
                 image:dog.image.url,
-                temperament:dog.temperament
+                temperament:dog.temperament,
+                origen: "API"
             }
         })
         
@@ -38,6 +39,7 @@ module.exports=async()=>{
                 life_span:dog.life_span,
                 image:dog.image,
                 temperament:dog.temperament.map(t=>t.dataValues.name).join(', '),
+                origen: dog.origen,
             }
         }
         )

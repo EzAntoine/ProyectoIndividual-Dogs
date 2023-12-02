@@ -19,6 +19,7 @@ module.exports=async(idRaza)=>{
         });
 
         if(detailDB){
+            console.log(detailDB);
                 return {
                     id:detailDB.id,
                     name:detailDB.name,
@@ -27,6 +28,7 @@ module.exports=async(idRaza)=>{
                     life_span:detailDB.life_span,
                     image:detailDB.image,
                     temperament:detailDB.temperament.map(t=>t.dataValues.name).join(', '),
+                    origen:detailDB.origen,
                 }
             }
             else {throw new Error(`No existen coincidencias con el ID ${idRaza}`)};

@@ -38,6 +38,7 @@ const Detail=()=>{
                     <h2>Peso: {dogDet.weight && dogDet.weight}</h2>
                     <h2>Temperamento: {dogDet.temperament && dogDet.temperament}</h2>
                     <h2>Años de vida: {dogDet.life_span && dogDet.life_span}</h2>
+                    <h2>Origen: {dogDet.origen}</h2>
                 </div>
                 <div className={style.rightContent}>
                     <img src={dogDet.image && dogDet.image} alt={dogDet.name}/>
