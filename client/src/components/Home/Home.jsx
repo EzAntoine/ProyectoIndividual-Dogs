@@ -84,8 +84,8 @@ const Home=()=>{
                 </select>
                 <select name={'filterOrigen'} onChange={handleSelect} className={style.select}>
                         <option value="all">Todos</option>
-                        <option value="api">API</option>
-                        <option value="bd">Base de datos</option>
+                        <option value="API">API</option>
+                        <option value="BD">Base de datos</option>
                 </select>
             </div>
 

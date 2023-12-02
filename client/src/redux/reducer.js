@@ -45,7 +45,7 @@ const reducer=(state=initialState,action)=>{
                     copyBreeds:state.allBreeds,
             }
             else{
-                const filterByOrigen= [...state.copyBreeds].filter((dog)=>{
+                const filterByOrigen= [...state.allBreeds].filter((dog)=>{
                     return (dog.origen===action.payload);
                 });
                 return{
@@ -57,15 +57,15 @@ const reducer=(state=initialState,action)=>{
             if(action.payload==='all')
                 return{
                     ...state,
-                    filteredTemperaments:state.allTemperaments,
+                    copyBreeds:state.allBreeds,
             }
             else{
-                const filterByTemp= [...state.allTemperaments].filter((dog)=>{
-                    return (dog.temperament.split(', ').find(action.payload));
+                const filterByTemp= [...state.allBreeds].filter((dog)=>{
+                    return (dog.temperament.split(', ').includes(action.payload));
                 });
                 return{
                     ...state,
-                    filteredTemperaments: filterByTemp,
+                    copyBreeds: filterByTemp,
                 }
             }
         case ORDER_AZ:
