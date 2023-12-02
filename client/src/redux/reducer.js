@@ -70,8 +70,8 @@ const reducer=(state=initialState,action)=>{
             }
         case ORDER_AZ:
             let orderAZ= action.payload==='A' 
-                ? [...state.copyBreeds].sort((a,b)=> a.name - b.name)  // a y b son dogs.
-                : [...state.copyBreeds].sort((a,b)=> b.name - a.name); // En este caso es descendente.
+                ? [...state.copyBreeds].sort((a,b)=> a.name.localeCompare(b.name))  // a y b son dogs.
+                : [...state.copyBreeds].sort((a,b)=> b.name.localeCompare(a.name)); // En este caso es descendente.
             
             return {
                 ...state,
