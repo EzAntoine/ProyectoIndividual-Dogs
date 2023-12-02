@@ -77,7 +77,7 @@ const Home=()=>{
                         <option value="min">Menor Peso</option>
                         <option value="max">Mayor Peso</option>
                 </select>
-                <select name={'filterTemp'} onChange={handleSelect}>
+                <select name={'filterTemp'} onChange={handleSelect} className={style.select}>
                     <option value="all">Todos los Temperamentos</option>
                         {temperamentos.map(temp => {
                             return (                    
@@ -86,7 +86,7 @@ const Home=()=>{
                         }
                 </select>
                 <select name={'filterOrigen'} onChange={handleSelect} className={style.select}>
-                        <option value="all">Todos los origenes</option>
+                        <option value="all">Todos los Origenes</option>
                         <option value="API">API</option>
                         <option value="BD">Base de datos</option>
                 </select>
