@@ -1,9 +1,10 @@
-import {GET_ALL_BREEDS,GET_DETAIL,GET_BY_NAME,POST_BREED,GET_TEMPERAMENTS,FILTER,ORDER} from './action-types';
+import {GET_ALL_BREEDS,GET_DETAIL,GET_BY_NAME,POST_BREED,GET_TEMPERAMENTS,FILTER_ORIGEN,FILTER_TEMPS,ORDER_AZ,ORDER_WEIGHT} from './action-types';
 
 const initialState={
     allBreeds:[],
+    copyBreeds:[],
     breedDetail:[],
-    breedTemperaments:[],
+    allTemperaments:[],
     filteredBreeds:[],
     filteredTemperaments:[],
     breedsOrdered:[]
@@ -14,7 +15,8 @@ const reducer=(state=initialState,action)=>{
         case GET_ALL_BREEDS:
             return{
                 ...state,
-                allBreeds: action.payload
+                allBreeds: action.payload,
+                copyBreeds: action.payload,
             }
         case GET_DETAIL:
             return{
@@ -24,7 +26,7 @@ const reducer=(state=initialState,action)=>{
         case GET_BY_NAME:
             return{
                 ...state,
-                allBreeds: action.payload
+                copyBreeds: action.payload
             }
         case POST_BREED:
             return{
@@ -34,23 +36,55 @@ const reducer=(state=initialState,action)=>{
         case GET_TEMPERAMENTS:
             return{
                 ...state,
-                breedTemperaments:action.payload,
+                allTemperaments:action.payload,
             }
-        case FILTER:
-            //if(action.payload===' --- ')
-            return{
-                ...state,
-                filteredTemperaments:action.payload,
+        case FILTER_ORIGEN:
+            if(action.payload==='all')
+                return{
+                    ...state,
+                    copyBreeds:state.allBreeds,
             }
-        case ORDER:
-            //falta ordenar por peso
-            let ordenados= action.payload==='A' 
-                ? [...state.myFavorites].sort((a,b)=> a.id - b.id)  // a y b son personajes.
-                : [...state.myFavorites].sort((a,b)=> b.id - a.id); // En este caso es descendente.
+            else{
+                const filterByOrigen= [...state.copyBreeds].filter((dog)=>{
+                    return (dog.origen===action.payload);
+                });
+                return{
+                    ...state,
+                    copyBreeds: filterByOrigen,
+                }
+            }
+        case FILTER_TEMPS:
+            if(action.payload==='all')
+                return{
+                    ...state,
+                    filteredTemperaments:state.allTemperaments,
+            }
+            else{
+                const filterByTemp= [...state.allTemperaments].filter((dog)=>{
+                    return (dog.temperament.split(', ').find(action.payload));
+                });
+                return{
+                    ...state,
+                    filteredTemperaments: filterByTemp,
+                }
+            }
+        case ORDER_AZ:
+            let orderAZ= action.payload==='A' 
+                ? [...state.copyBreeds].sort((a,b)=> a.name - b.name)  // a y b son dogs.
+                : [...state.copyBreeds].sort((a,b)=> b.name - a.name); // En este caso es descendente.
             
             return {
                 ...state,
-                breedsOrdered:ordenados,
+                copyBreeds:orderAZ,
+            }
+        case ORDER_WEIGHT:
+            let orderWeight= action.payload==='min' 
+                ? [...state.copyBreeds].sort((a,b)=> a.weight.split('-')[0] - b.weight.split('-')[0])  // a y b son dogs.
+                : [...state.copyBreeds].sort((a,b)=> b.weight.split('-')[0] - a.weight.split('-')[0]); // En este caso es descendente.
+            
+            return {
+                ...state,
+                copyBreeds:orderWeight,
             }
         default:
             return{

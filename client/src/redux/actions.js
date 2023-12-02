@@ -1,5 +1,5 @@
 /* Dependencies */
-import {GET_ALL_BREEDS,GET_DETAIL,GET_BY_NAME,POST_BREED,GET_TEMPERAMENTS,FILTER,ORDER} from './action-types';
+import {GET_ALL_BREEDS,GET_DETAIL,GET_BY_NAME,POST_BREED,GET_TEMPERAMENTS,FILTER_ORIGEN,FILTER_TEMPS,ORDER_AZ,ORDER_WEIGHT} from './action-types';
 import axios from 'axios';
 
 export const getAllBreeds=()=>{
@@ -62,10 +62,18 @@ export const getTemperaments=()=>{
     }
 }
 
-export const filterBreeds=(gender)=>{
-    return {type: FILTER, payload:gender}
+export const filterBreedsOrigen=(origen)=>{
+    return {type: FILTER_ORIGEN, payload:origen}
 }
 
-export const orderBreeds=(orden)=>{
-    return {type: ORDER, payload:orden}
+export const filterTemps=(temperamento)=>{
+    return {type: FILTER_ORIGEN, payload:temperamento}
+}
+
+export const orderBreedsAZ=(orden)=>{
+    return {type: ORDER_AZ, payload:orden}   
+}
+
+export const orderBreedsWeight=(weight)=>{
+    return {type: ORDER_WEIGHT, payload:weight}   
 }
