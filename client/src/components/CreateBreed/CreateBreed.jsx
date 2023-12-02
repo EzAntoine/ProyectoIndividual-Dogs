@@ -9,7 +9,7 @@ import { createBreed, getTemperaments } from "../../redux/actions";
 
 const CreateBreed=()=>{
     const dispatch=useDispatch();
-    const temperamentos=useSelector(state=>state.breedTemperaments
+    const temperamentos=useSelector(state=>state.allTemperaments
         .sort((a,b)=>{
             if(a.name<b.name)return -1;
             else return 1;
