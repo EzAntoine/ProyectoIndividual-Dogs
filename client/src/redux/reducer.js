@@ -61,7 +61,7 @@ const reducer=(state=initialState,action)=>{
             }
             else{
                 const filterByTemp= [...state.allBreeds].filter((dog)=>{
-                    return (dog.temperament.split(', ').includes(action.payload));
+                    return (dog.temperament?.includes(action.payload));
                 });
                 return{
                     ...state,

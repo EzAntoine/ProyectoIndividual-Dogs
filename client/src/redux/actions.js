@@ -67,7 +67,9 @@ export const filterBreedsOrigen=(origen)=>{
 }
 
 export const filterTemps=(temperamento)=>{
-    return {type: FILTER_ORIGEN, payload:temperamento}
+    console.log("Entro a la action con"+temperamento);
+
+    return {type: FILTER_TEMPS, payload:temperamento}
 }
 
 export const orderBreedsAZ=(orden)=>{
