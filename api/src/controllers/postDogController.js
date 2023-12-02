@@ -20,8 +20,10 @@ module.exports=async(name, minHeight, maxHeight, minWeight, maxWeight, image, li
             const arrayTemps=temperament?.split(',').map(temp=>temp.trim()); //Para cada string, separo los temperamentos y borro espacios.
     
             arrayTemps.forEach(async temp=>{
-                const [newTemp,createdTemp]=await Temperaments.findOrCreate({where:{name:temp}});
-                await createdDog.setTemperament(newTemp);
+                if(temp!==""){
+                    const [newTemp,createdTemp]=await Temperaments.findOrCreate({where:{name:temp}});
+                    await createdDog.setTemperament(newTemp);
+                }
             })
         }
         return createdDog; 

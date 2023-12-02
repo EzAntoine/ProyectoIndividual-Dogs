@@ -77,9 +77,11 @@ const Home=()=>{
                 <select name={'filterTemp'} onChange={handleSelect} className={style.select}>
                     <option value="all">Todos los Temperamentos</option>
                         {temperamentos.map(temp => {
-                            return (                    
-                                <option name={temp.name} key={temp.id}>{temp.name}</option> 
-                            )})
+                            if(temp!=="")
+                                return (<option name={temp.name} key={temp.id}>{temp.name}</option>)
+                            else
+                                return ''
+                        })
                         }
                 </select>
                 <select name={'filterOrigen'} onChange={handleSelect} className={style.select}>

@@ -105,8 +105,10 @@ const CreateBreed=()=>{
         if(!response.error){
             window.alert(`${input.name} creado con éxito, con ID: ${response.payload.id}`);
         }
-        else
-            window.alert(response.error);
+        else{
+            window.alert(response.error+" Por favor intente nuevamente.");
+            window.location.reload(); //Consultar si es buena practica, no pude resetear input y los campos.
+        }
     }
 
     const handleSelect=(event)=> {
