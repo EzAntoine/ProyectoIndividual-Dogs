@@ -3,6 +3,9 @@ import {GET_ALL_BREEDS,GET_DETAIL,GET_BY_NAME,POST_BREED,GET_TEMPERAMENTS,FILTER
 const initialState={
     allBreeds:[],
     copyBreeds:[],
+    filtroOrig:[],
+    filtroTemps:[],
+    filtroCombinado:[],
     breedDetail:[],
     allTemperaments:[],
 }
@@ -36,33 +39,71 @@ const reducer=(state=initialState,action)=>{
                 allTemperaments:action.payload,
             }
         case FILTER_ORIGEN:
-            if(action.payload==='all')
-                return{
-                    ...state,
-                    copyBreeds:state.allBreeds,
+            if(action.payload==='all'){
+                if(state.filtroTemps.length){
+                    return{
+                        ...state,
+                        filtroCombinado:state.filtroTemps,
+                        copyBreeds:state.filtroCombinado,
+                        filtroOrig:[]
+                    }
+                }else{
+                    return{
+                        ...state,
+                        copyBreeds:state.allBreeds,
+                        filtroOrig:[]
+                    }
+                }
             }
             else{
-                const filterByOrigen= [...state.allBreeds].filter((dog)=>{
-                    return (dog.origen===action.payload);
-                });
+                let filterByOrigen=[];
+                if(state.filtroTemps.length){
+                    filterByOrigen=[...state.filtroTemps].filter((dog)=>{
+                        return (dog.origen===action.payload);
+                    });
+                }else{
+                   filterByOrigen=[...state.allBreeds].filter((dog)=>{
+                        return (dog.origen===action.payload);
+                    }); 
+                }
                 return{
                     ...state,
-                    copyBreeds: filterByOrigen,
+                    filtroOrig:filterByOrigen,
+                    filtroCombinado: filterByOrigen,
                 }
             }
         case FILTER_TEMPS:
-            if(action.payload==='all')
-                return{
-                    ...state,
-                    copyBreeds:state.allBreeds,
+            if(action.payload==='all'){
+                if(state.filtroOrig.length){
+                    return{
+                        ...state,
+                        filtroCombinado:state.filtroOrig,
+                        copyBreeds:state.filtroCombinado,
+                        filtroTemps:[]
+                    }
+                }else{
+                    return{
+                        ...state,
+                        copyBreeds:state.allBreeds,
+                        filtroTemps:[]
+                    }
+                }
             }
             else{
-                const filterByTemp= [...state.allBreeds].filter((dog)=>{
-                    return (dog.temperament?.includes(action.payload));
-                });
+                let filterByTemp=[];
+                if(state.filtroOrig.length){
+                    filterByTemp=[...state.filtroOrig].filter((dog)=>{
+                        return (dog.temperament?.includes(action.payload));
+                    });  
+                } else{
+                    filterByTemp=[...state.allBreeds].filter((dog)=>{
+                        return (dog.temperament?.includes(action.payload));
+                    }); 
+                }
                 return{
                     ...state,
-                    copyBreeds: filterByTemp,
+                    filtroTemps:filterByTemp,
+                    filtroCombinado: filterByTemp,
                 }
             }
         case ORDER_AZ:

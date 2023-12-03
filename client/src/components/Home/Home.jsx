@@ -4,7 +4,7 @@ import style from "./Home.module.css";
 import NavBar from "../NavBar/NavBar";
 import Cards from "../Cards/Cards";
 /* Hooks */
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBreeds, getBreedByName, getTemperaments, filterBreedsOrigen, filterTemps, orderBreedsAZ, orderBreedsWeight } from "../../redux/actions";
 import { useLocation } from "react-router-dom";
@@ -12,38 +12,36 @@ import { useLocation } from "react-router-dom";
 const Home=()=>{
 
     const dispatch=useDispatch();
-    const allBreeds=useSelector(state=>state.copyBreeds);
+    const copyBreeds=useSelector(state=>state.copyBreeds);
+    const filtroOrig=useSelector(state=>state.filtroOrig);
+    const filtroTemps=useSelector(state=>state.filtroTemps);
+    const filtroCombinado=useSelector(state=>state.filtroCombinado);
     const temperamentos=useSelector(state=>state.allTemperaments
         .sort((a,b)=>{
             if(a.name<b.name)return -1;
             else return 1;
         }) //Ordeno los temperamentos para la seleccion.
     )
-    const [filtrados,setFiltrados]=useState(allBreeds);
-    const [searchString,setSearchString]=useState("");
     const {pathname}=useLocation();
 
     useEffect(() => {
         dispatch(getTemperaments());
     }, [dispatch]);
 
-    useEffect(() => {
-        setFiltrados(allBreeds);
-    }, [allBreeds]);
-
-    const handleChange=(event)=>{
-        event.preventDefault(); //Evita que se re renderice constantemente.
-        setSearchString(event.target.value);
-    }
-    
-    const handleSubmit=(event)=>{
-        event.preventDefault(); //Evita que se re renderice constantemente.
-        dispatch(getBreedByName(searchString));
-    }
-
     useEffect(()=>{
         dispatch(getAllBreeds());
     },[dispatch]);
+    
+    const handleChange=(event)=>{
+        event.preventDefault(); //Evita que se re renderice constantemente.
+        dispatch(getBreedByName(event.target.value));
+    }
+    
+    /* HandleSubmit correspondiente al boton de busqueda (lupa), de NavBar.
+        const handleSubmit=(event)=>{
+        event.preventDefault(); //Evita que se re renderice constantemente.
+        dispatch(getBreedByName(event.target.value));
+    } */
 
     const handleSelect=(event)=>{
         if(event.target.name==="orderAZ")
@@ -61,7 +59,7 @@ const Home=()=>{
     return(
         <div className={style.home}>
             {pathname!=='/' && <h2 className={style.title}>Perritos Web</h2>}
-            {pathname!=='/' && <NavBar handleChange={handleChange} handleSubmit={handleSubmit}/>}
+            {pathname!=='/' && <NavBar handleChange={handleChange} /* handleSubmit={handleSubmit} *//>}
             
             <div className={style.selectContainer}>
                 <select name={'orderAZ'} onChange={handleSelect} className={style.select}>
@@ -80,8 +78,7 @@ const Home=()=>{
                             if(temp!=="")
                                 return (<option name={temp.name} key={temp.id}>{temp.name}</option>)
                             else
-                                return ''
-                        })
+                                return ''})
                         }
                 </select>
                 <select name={'filterOrigen'} onChange={handleSelect} className={style.select}>
@@ -90,8 +87,13 @@ const Home=()=>{
                         <option value="BD">Base de datos</option>
                 </select>
             </div>
+            
+            {!filtroOrig.length && !filtroTemps.length 
+                ? <Cards allBreeds={copyBreeds}/> 
+                : <Cards allBreeds={filtroCombinado}/> 
+            }
 
-            <Cards allBreeds={filtrados}/>
+            
         </div>
     )
 

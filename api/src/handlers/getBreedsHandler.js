@@ -10,7 +10,7 @@ module.exports=async(req,res)=>{
             const filtrados = await allBreeds?.filter((dog) => dog.name && dog.name.toLowerCase().includes(name.toLowerCase()));
             
             filtrados.length 
-            ? res.status(200).send(filtrados) 
+            ? res.status(200).json(filtrados) 
             : res.status(404).send(`No existen coincidencias con: ${name}`);
         }else { 
             res.status(200).json(allBreeds);

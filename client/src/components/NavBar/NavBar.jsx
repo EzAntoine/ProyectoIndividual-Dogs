@@ -11,9 +11,19 @@ const NavBar=({handleChange,handleSubmit})=>{
     return(
         <div className={style.navConteiner}>
             {pathname ==='/home' &&
-                <form className={style.searchBox} onChange={handleChange}>
-                    <input className={style.searchInput} placeholder="Buscar por nombre" type="search"/>
-                    <button className={style.buttonSearch} type="submit" onClick={handleSubmit}></button>
+                <form className={style.searchBox}>
+                    <input 
+                        className={style.searchInput} 
+                        placeholder="Buscar por nombre" 
+                        type="search" 
+                        onChange={handleChange}
+                    />
+                    <button 
+                        className={style.buttonSearch} 
+                        /* Deshabilito el boton (lupa), ya que busca directamente al escribir.
+                        type="submit" 
+                        onClick={handleSubmit} */>
+                    </button>
                 </form>
             }
             <Link to='./home'>

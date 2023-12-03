@@ -5,7 +5,6 @@ import { useParams, Link } from 'react-router-dom';
 import {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 /* Dendencies */
-//import axios from 'axios';
 import { getDetail } from '../../redux/actions';
 
 const Detail=()=>{
