@@ -107,22 +107,44 @@ const reducer=(state=initialState,action)=>{
                 }
             }
         case ORDER_AZ:
-            let orderAZ= action.payload==='A' 
-                ? [...state.copyBreeds].sort((a,b)=> a.name.localeCompare(b.name))  // a y b son dogs.
-                : [...state.copyBreeds].sort((a,b)=> b.name.localeCompare(a.name)); // En este caso es descendente.
-            
-            return {
-                ...state,
-                copyBreeds:orderAZ,
+            if(!state.filtroCombinado.length){
+                let orderAZ= action.payload==='A' 
+                    ? [...state.copyBreeds].sort((a,b)=> a.name.localeCompare(b.name))  // a y b son dogs.
+                    : [...state.copyBreeds].sort((a,b)=> b.name.localeCompare(a.name)); // En este caso es descendente.
+                
+                return {
+                    ...state,
+                    copyBreeds:orderAZ,
+                }
+            }else{
+                let orderAZ= action.payload==='A' 
+                    ? [...state.filtroCombinado].sort((a,b)=> a.name.localeCompare(b.name))  // a y b son dogs.
+                    : [...state.filtroCombinado].sort((a,b)=> b.name.localeCompare(a.name)); // En este caso es descendente.
+                
+                return {
+                    ...state,
+                    filtroCombinado:orderAZ,
+                }
             }
         case ORDER_WEIGHT:
-            let orderWeight= action.payload==='min' 
-                ? [...state.copyBreeds].sort((a,b)=> a.weight.split('-')[0] - b.weight.split('-')[0])  // a y b son dogs.
-                : [...state.copyBreeds].sort((a,b)=> b.weight.split('-')[0] - a.weight.split('-')[0]); // En este caso es descendente.
-            
-            return {
-                ...state,
-                copyBreeds:orderWeight,
+            if(!state.filtroCombinado.length){
+                let orderWeight= action.payload==='min' 
+                    ? [...state.copyBreeds].sort((a,b)=> a.weight.split('-')[0] - b.weight.split('-')[0])  // a y b son dogs.
+                    : [...state.copyBreeds].sort((a,b)=> b.weight.split('-')[0] - a.weight.split('-')[0]); // En este caso es descendente.
+                
+                return {
+                    ...state,
+                    copyBreeds:orderWeight,
+                }
+            }else{
+                let orderWeight= action.payload==='min' 
+                    ? [...state.filtroCombinado].sort((a,b)=> a.weight.split('-')[0] - b.weight.split('-')[0])  // a y b son dogs.
+                    : [...state.filtroCombinado].sort((a,b)=> b.weight.split('-')[0] - a.weight.split('-')[0]); // En este caso es descendente.
+                
+                return {
+                    ...state,
+                    filtroCombinado:orderWeight,
+                }
             }
         default:
             return{
