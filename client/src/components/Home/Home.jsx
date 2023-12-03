@@ -12,6 +12,7 @@ import { useLocation } from "react-router-dom";
 const Home=()=>{
 
     const dispatch=useDispatch();
+    const {pathname}=useLocation();
     const copyBreeds=useSelector(state=>state.copyBreeds);
     const filtroOrig=useSelector(state=>state.filtroOrig);
     const filtroTemps=useSelector(state=>state.filtroTemps);
@@ -22,7 +23,6 @@ const Home=()=>{
             else return 1;
         }) //Ordeno los temperamentos para la seleccion.
     )
-    const {pathname}=useLocation();
 
     useEffect(() => {
         dispatch(getTemperaments());
@@ -91,12 +91,9 @@ const Home=()=>{
             {!filtroOrig.length && !filtroTemps.length 
                 ? <Cards allBreeds={copyBreeds}/> 
                 : <Cards allBreeds={filtroCombinado}/> 
-            }
-
-            
+            }            
         </div>
     )
-
 }
 
 export default Home;
