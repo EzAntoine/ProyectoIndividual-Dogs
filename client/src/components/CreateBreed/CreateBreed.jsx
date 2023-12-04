@@ -126,6 +126,8 @@ const CreateBreed=()=>{
         });
       }
 
+    const handleReset=()=>{}
+
     return(
         <div className={style.create}>
             <div className={style.headContainer}>
@@ -202,6 +204,7 @@ const CreateBreed=()=>{
                 </div>
                 {<span className={style.span}>{error.vacio}</span>}
                 <div className={style.buttonContainer}>
+                    <button type="reset" className={style.button}>Reset</button>
                     <Link to="/home">
                         <button className={style.button}>Cancel</button>
                     </Link>
