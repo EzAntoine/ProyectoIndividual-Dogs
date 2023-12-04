@@ -1,4 +1,4 @@
-import {GET_ALL_BREEDS,GET_DETAIL,GET_BY_NAME,POST_BREED,GET_TEMPERAMENTS,FILTER_ORIGEN,FILTER_TEMPS,ORDER_AZ,ORDER_WEIGHT} from './action-types';
+import {GET_ALL_BREEDS,GET_DETAIL,GET_BY_NAME,POST_BREED,GET_TEMPERAMENTS,FILTER_ORIGEN,FILTER_TEMPS,ORDER_AZ,ORDER_WEIGHT,RESET} from './action-types';
 
 const initialState={
     allBreeds:[],
@@ -146,6 +146,17 @@ const reducer=(state=initialState,action)=>{
                 return {
                     ...state,
                     filtroCombinado:orderWeight,
+                }
+            }
+        case RESET:
+            {
+                return{
+                    ...state,
+                    copyBreeds:state.allBreeds,
+                    filtroOrig:[],
+                    filtroTemps:[],
+                    filtroCombinado:[],
+                    breedDetail:[],
                 }
             }
         default:

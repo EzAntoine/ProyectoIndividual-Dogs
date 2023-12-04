@@ -20,9 +20,9 @@ const NavBar=({handleChange,handleSubmit})=>{
                     />
                     <button 
                         className={style.buttonSearch} 
-                        /* Deshabilito el boton (lupa), ya que busca directamente al escribir.
                         type="submit" 
-                        onClick={handleSubmit} */>
+                        onClick={handleSubmit}
+                        disabled>
                     </button>
                 </form>
             }

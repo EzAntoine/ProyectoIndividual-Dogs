@@ -67,7 +67,6 @@
     width: 40px;
     height: 40px;
     align-items: center;
-    cursor: pointer;
     border: none;
     margin-right:10px;
     margin-left: 5px;
@@ -84,6 +83,3 @@
       color: black;
   }
  
-.buttonSearch:hover {
-    scale: 1.1;
-}

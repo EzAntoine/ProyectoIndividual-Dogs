@@ -7,7 +7,7 @@ import Footer from "../Footer/Footer";
 /* Hooks */
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllBreeds, getBreedByName, getTemperaments, filterBreedsOrigen, filterTemps, orderBreedsAZ, orderBreedsWeight } from "../../redux/actions";
+import { getAllBreeds, getBreedByName, getTemperaments, filterBreedsOrigen, filterTemps, orderBreedsAZ, orderBreedsWeight, resetFilters } from "../../redux/actions";
 import { useLocation } from "react-router-dom";
 
 const Home=()=>{
@@ -38,12 +38,10 @@ const Home=()=>{
         event.preventDefault(); //Evita que se re renderice constantemente.
         dispatch(getBreedByName(event.target.value));
     }
-    
-    /* HandleSubmit correspondiente al boton de busqueda (lupa), de NavBar.
-        const handleSubmit=(event)=>{
-        event.preventDefault(); //Evita que se re renderice constantemente.
-        dispatch(getBreedByName(event.target.value));
-    } */
+   
+    const handleReset=()=>{
+        dispatch(resetFilters());
+    }
 
     const handleSelect=(event)=>{
         if(event.target.name==="orderAZ")
@@ -73,9 +71,10 @@ const Home=()=>{
     return(
         <div className={style.home}>
             {pathname!=='/' && <h2 className={style.title}>Perritos Web</h2>}
-            {pathname!=='/' && <NavBar handleChange={handleChange} /* handleSubmit={handleSubmit} *//>}
+            {pathname!=='/' && <NavBar handleChange={handleChange}/>}
             
             <div className={style.selectContainer}>
+                <button className={style.buttons} onClick={handleReset}>Reset</button>
                 <select name={'orderAZ'} onChange={handleSelect} className={style.select}>
                         <option value="defaultOption">Ordenar Alfabeticamente</option>
                         <option value="A">A - Z</option>

@@ -7,4 +7,4 @@ export const FILTER_ORIGEN='FILTER_ORIGEN';
 export const FILTER_TEMPS='FILTER_TEMPS';
 export const ORDER_AZ='ORDER_AZ';
 export const ORDER_WEIGHT='ORDER_WEIGHT';
-
+export const RESET="RESET";
