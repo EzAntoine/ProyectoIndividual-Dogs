@@ -98,5 +98,5 @@ body {
 }
 
 .buttonContainer:hover{
-    scale: 1.1;
+    zoom: 1.2;
 }
