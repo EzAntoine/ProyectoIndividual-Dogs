@@ -1,117 +1,124 @@
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
- 
+
 .title{
-  width: 100vh;
-  height: 10vh;
-  padding: 10px;
-  margin-top: 30px;
-  margin-bottom: 20px;
-  font-size: 60px;
-  color:rgb(80, 26, 26);
-  font-family: "Bigelow Rules";
-  background-color: rgb(204, 180, 114);
-  border: 1px solid rgb(80, 26, 26);
-  border-radius: 6px;
+width: 80vh;
+height: 10vh;
+padding: 5px;
+margin-top: 30px;
+margin-bottom: 10px;
+font-size: 60px;
+color:rgb(80, 26, 26);
+font-family: "Bigelow Rules";
+background-color: rgb(204, 180, 114);
+border: 1px solid rgb(80, 26, 26);
+border-radius: 6px;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
 
 .form {
-  margin-top: 10%;
-  margin-left: 20%;
-  max-width: 350px;
-  background-color: rgb(204, 180, 114);
-  border-radius: 6px;
-  border: solid black 1px;
-  font-size: large;
+margin-top: 10%;
+margin-left: 20%;
+max-width: 350px;
+background-color: rgb(204, 180, 114);
+border-radius: 6px;
+border: solid black 1px;
+font-size: large;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
 }
 
 .input {
-  width: 100%;
-  padding: 5px;
-  margin-bottom: 15px;
-  box-sizing: border-box;
-  border-radius: 6px;
-  font-weight: bold;
+width: 100%;
+padding: 5px;
+margin-bottom: 15px;
+box-sizing: border-box;
+border-radius: 6px;
+font-weight: bold;
 }
 
 .buttonContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 10px;
 }
 
 .button {
-  width:100px;
-  height: 40px;
-  padding: 10px;
-  margin: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: solid rgb(47, 49, 44) 1px;
-  border-radius: 7px;
-  box-sizing: border-box;
-  box-shadow: inset 0 0 5px gray;
-  background-color: rgb(212, 184, 105);
-  cursor: pointer;
-  font-size: 0.9em; 
+width:100px;
+height: 40px;
+padding: 10px;
+margin: 5px;
+display: flex;
+align-items: center;
+justify-content: center;
+border: solid rgb(47, 49, 44) 1px;
+border-radius: 7px;
+box-sizing: border-box;
+box-shadow: inset 0 0 5px gray;
+background-color: rgb(212, 184, 105);
+cursor: pointer;
+font-size: 0.9em; 
 }
 
 .button:hover{
-  background-color: wheat;
-  color: black;
-  scale: 1.1;
+background-color: wheat;
+color: black;
+scale: 1.1;
 }
 
 .buttonContainer a {
-  text-decoration: initial;
-  color: initial;
+text-decoration: initial;
+color: initial;
 }
 
 .closeButton{
-    width: 8%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0,7;
-    top: 5px;
-    right: 5px;
+  width: 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0,7;
+  top: 5px;
+  right: 5px;
 }
 
 .closeButton:hover{
-    background-color:darkred;
-    color: white;
+  background-color:darkred;
+  color: white;
 }
 
 .span {
-    color: rgb(204, 17, 17);
-    font-weight: bold;
-    font-size: medium;
-  }
+  color: rgb(204, 17, 17);
+  font-weight: bold;
+  font-size: medium;
+}
 
 .seleccionados {
-    display: flex;
-    background-color: navajowhite;
-    width: 90%;
-    height: 30px;
-    border: solid black 1px;
-    border-radius: 5px;
-    justify-content: center;
-    align-items: center;
-    margin: 2px;
-    gap: 10px;
+  display: flex;
+  background-color: navajowhite;
+  width: 90%;
+  height: 30px;
+  border: solid black 1px;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  gap: 10px;
 }
 
 .headContainer {
-  display: inline;
+display: inline;
 
 }
 
 .headContainer a {
-  text-decoration: initial;
-  color: initial;
+text-decoration: initial;
+color: initial;
 }

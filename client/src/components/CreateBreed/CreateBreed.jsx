@@ -104,6 +104,7 @@ const CreateBreed=()=>{
         const response=await dispatch(createBreed(newInput));
         if(!response.error){
             window.alert(`${input.name} creado con éxito, con ID: ${response.payload.id}`);
+            window.location.reload(); //Consultar si es buena practica, no pude resetear input y los campos.
         }
         else{
             window.alert(response.error+" Por favor intente nuevamente.");
