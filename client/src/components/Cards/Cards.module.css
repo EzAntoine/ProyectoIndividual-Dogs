@@ -41,3 +41,25 @@
     color: black;
     scale: 1.1;
 }
+
+.msg {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 80vh;
+    height: 5vh;
+    padding: 5px;
+    position: absolute;
+    top: 50%;
+    bottom: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color:rgb(80, 26, 26);
+    font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    background-color: rgb(212, 164, 33);
+    border: 1px solid rgb(80, 26, 26);
+    border-radius: 6px;
+}

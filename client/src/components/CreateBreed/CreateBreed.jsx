@@ -126,7 +126,7 @@ const CreateBreed=()=>{
       }
 
     return(
-        <div>
+        <div className={style.create}>
             <div className={style.headContainer}>
                 <h2 className={style.title}>Perritos Web</h2>
                 <Link to='/home'>

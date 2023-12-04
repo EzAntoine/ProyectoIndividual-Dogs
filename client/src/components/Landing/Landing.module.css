@@ -5,7 +5,7 @@ body {
     background-attachment: fixed;
 }
 
-body::before {
+/* body::before {
     content: "";
     position: absolute;
     top: 0;
@@ -14,7 +14,7 @@ body::before {
     height: 100%;
     background-color: rgba(255, 255, 255, 0.5); 
     z-index: -1; 
-  }
+  } */
 
 .landing {
     padding: 10px;
@@ -80,7 +80,7 @@ body::before {
     left: 50%;
     width:50vh;
     height: 10vh;
-    padding: 10px;
+    padding: 15px;
     margin-top: 0;
     display: flex;
     align-items: center;
@@ -94,6 +94,7 @@ body::before {
     font-size: 0.9em; 
     z-index: 1;
     font-weight: bold;
+    color:rgb(80, 26, 26);
 }
 
 .buttonContainer:hover{

@@ -9,9 +9,7 @@ module.exports=async(req,res)=>{
         if (name) { 
             const filtrados = await allBreeds?.filter((dog) => dog.name && dog.name.toLowerCase().includes(name.toLowerCase()));
             
-            filtrados.length 
-            ? res.status(200).json(filtrados) 
-            : res.status(404).send(`No existen coincidencias con: ${name}`);
+            res.status(200).json(filtrados); //Retorna tenga elementos o no, luego renderiza segun el contenido.
         }else { 
             res.status(200).json(allBreeds);
         }

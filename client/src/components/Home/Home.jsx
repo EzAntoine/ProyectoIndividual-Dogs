@@ -3,8 +3,9 @@ import style from "./Home.module.css";
 /* Components */
 import NavBar from "../NavBar/NavBar";
 import Cards from "../Cards/Cards";
+import Footer from "../Footer/Footer";
 /* Hooks */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBreeds, getBreedByName, getTemperaments, filterBreedsOrigen, filterTemps, orderBreedsAZ, orderBreedsWeight } from "../../redux/actions";
 import { useLocation } from "react-router-dom";
@@ -23,6 +24,7 @@ const Home=()=>{
             else return 1;
         }) //Ordeno los temperamentos para la seleccion.
     )
+    const [cargando, setCargando] = useState(true);
 
     useEffect(() => {
         dispatch(getTemperaments());
@@ -54,6 +56,18 @@ const Home=()=>{
             dispatch(filterTemps(event.target.value));
         if(event.target.name==="filterOrigen")
             dispatch(filterBreedsOrigen(event.target.value));
+    }
+
+    setTimeout(() => {
+        setCargando(false);
+      }, 2000);
+
+    if (cargando) {
+    return (
+        <div>
+            <h3 className={style.carga}>Cargando razas...</h3>
+        </div>
+    );
     }
 
     return(
@@ -91,7 +105,11 @@ const Home=()=>{
             {!filtroOrig.length && !filtroTemps.length 
                 ? <Cards allBreeds={copyBreeds}/> 
                 : <Cards allBreeds={filtroCombinado}/> 
-            }            
+            } 
+
+            <div>
+                <Footer/>
+            </div>           
         </div>
     )
 }

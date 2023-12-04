@@ -1,0 +1,11 @@
+.footer {
+    background-color: rgb(204, 180, 114);
+    text-align: center;
+    position:relative;
+    bottom: -3vh;
+    margin-top: -10vh;
+    max-height: 5vh;
+    width: 100vh;
+    font-weight: bold;
+  }
+  
