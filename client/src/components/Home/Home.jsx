@@ -60,7 +60,7 @@ const Home=()=>{
 
     setTimeout(() => {
         setCargando(false);
-      }, 2000);
+      }, 2500);
 
     if (cargando) {
     return (

@@ -51,7 +51,8 @@ const reducer=(state=initialState,action)=>{
                     return{
                         ...state,
                         copyBreeds:state.allBreeds,
-                        filtroOrig:[]
+                        filtroOrig:[],
+                        filtroCombinado:[]
                     }
                 }
             }
@@ -85,7 +86,8 @@ const reducer=(state=initialState,action)=>{
                     return{
                         ...state,
                         copyBreeds:state.allBreeds,
-                        filtroTemps:[]
+                        filtroTemps:[],
+                        filtroCombinado:[]
                     }
                 }
             }
