@@ -49,16 +49,16 @@ const CreateBreed=()=>{
             name:!(/^[a-zA-Z -]+$/).test(input.name)
                 ? "El nombre no puede incluir números."
                 : "",
-            minHeight:!(/^[0-9]+$/).test(input.minHeight) || input.minHeight > input.maxHeight
+            minHeight:!(/^[0-9]+$/).test(input.minHeight) || +input.minHeight > +input.maxHeight
                 ? "La altura mínima solo puede ser un número y debe ser menor a la máxima."
                 : "",
-            maxHeight:!(/^[0-9]+$/).test(input.maxHeight) || input.minHeight>input.maxHeight
+            maxHeight:!(/^[0-9]+$/).test(input.maxHeight) || +input.minHeight>+input.maxHeight
                 ? "La altura máxima solo puede ser un número y debe ser mayor a la mínima."
                 : "",
-            minWeight:!(/^[0-9]+$/).test(input.minWeight) || input.minWeight>input.maxWeight
+            minWeight:!(/^[0-9]+$/).test(input.minWeight) || +input.minWeight>+input.maxWeight
                 ? "El peso mínimo solo puede ser un número y debe ser menor al máximo."
                 : "",
-            maxWeight:!(/^[0-9]+$/).test(input.maxWeight) || input.minWeight>input.maxWeight
+            maxWeight:!(/^[0-9]+$/).test(input.maxWeight) || +input.minWeight>+input.maxWeight
                 ? "El peso máximo solo puede ser un número y debe ser mayor al mínimo."
                 : "",
             image:!(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/).test(input.image)
@@ -125,8 +125,6 @@ const CreateBreed=()=>{
           temperament: input.temperament.filter((temp) => temp !== t),
         });
       }
-
-    const handleReset=()=>{}
 
     return(
         <div className={style.create}>

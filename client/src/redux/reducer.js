@@ -17,6 +17,10 @@ const reducer=(state=initialState,action)=>{
                 ...state,
                 allBreeds: action.payload,
                 copyBreeds: action.payload,
+                filtroOrig:[],
+                filtroTemps:[],
+                filtroCombinado:[],
+                breedDetail:[],
             }
         case GET_DETAIL:
             return{
@@ -26,7 +30,7 @@ const reducer=(state=initialState,action)=>{
         case GET_BY_NAME:
             return{
                 ...state,
-                copyBreeds: action.payload
+                copyBreeds: action.payload,
             }
         case POST_BREED:
             return{
@@ -50,7 +54,6 @@ const reducer=(state=initialState,action)=>{
                 }else{
                     return{
                         ...state,
-                        copyBreeds:state.allBreeds,
                         filtroOrig:[],
                         filtroCombinado:[]
                     }
@@ -63,7 +66,7 @@ const reducer=(state=initialState,action)=>{
                         return (dog.origen===action.payload);
                     });
                 }else{
-                   filterByOrigen=[...state.allBreeds].filter((dog)=>{
+                   filterByOrigen=[...state.copyBreeds].filter((dog)=>{
                         return (dog.origen===action.payload);
                     }); 
                 }
@@ -85,7 +88,6 @@ const reducer=(state=initialState,action)=>{
                 }else{
                     return{
                         ...state,
-                        copyBreeds:state.allBreeds,
                         filtroTemps:[],
                         filtroCombinado:[]
                     }
@@ -98,7 +100,7 @@ const reducer=(state=initialState,action)=>{
                         return (dog.temperament?.includes(action.payload));
                     });  
                 } else{
-                    filterByTemp=[...state.allBreeds].filter((dog)=>{
+                    filterByTemp=[...state.copyBreeds].filter((dog)=>{
                         return (dog.temperament?.includes(action.payload));
                     }); 
                 }
